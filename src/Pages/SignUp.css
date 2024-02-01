@@ -16,20 +16,23 @@
 }
 @media (max-width:600px){
     .alr-us{
-        margin-left: 150px;
+        margin-left: 260px;
         
     }
     .already-user{
         font-size: small;
+        width: 170px;
         
+    }
+    .register-button{
+        width: 305px;
     }
 }
 .already-user{
     font-family: 'Montserrat', sans-serif;
-    margin-right: 320px;
+    margin-right: 380px;
     color: rgba(0, 0, 0, 0.451);
     font-weight:600;
-    margin-left: 40px;
     margin-top: 20px;
 }
 

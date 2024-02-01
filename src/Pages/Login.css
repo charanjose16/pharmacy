@@ -38,19 +38,23 @@ input::placeholder {
 }
 @media (max-width:600px){
     .log-sign{
-        width: 28%;
+        width: 55%;
         
     }
     .forgetpw{
-        margin-left: 30%;
+        margin-left:18%;
         font-size: small;
     }
     input::placeholder{
           font-size: small;
     }
     .hr-login{
-        width:200px;
+        width:300px;
     }
+    .log-inp{
+        width: 305px;
+    }
+    
 }
 .login-button{
     font-family: 'Montserrat', sans-serif;
@@ -91,7 +95,7 @@ input::placeholder {
 .forgetpw{
     font-family: 'Montserrat', sans-serif;
     margin-top:15px;
-    margin-right: 300px;
+    margin-right: 400px;
     color: #6BBD99;
     font-weight:600;
     cursor: pointer;
