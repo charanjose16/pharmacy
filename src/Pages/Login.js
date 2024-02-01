@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./Login.css"
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {auth} from '../firebase-config';
-import {Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -35,7 +35,7 @@ const navigate = useNavigate();
     <h1 className='login-font'>Login</h1>
     </div>
     
-    <div className='login-inputs'>
+    <div className='login-inputs col-2'>
         <input className='log-inp' type="email" placeholder='Enter your email'  onChange={(event)=>{
             setUserEmail(event.target.value)
           
@@ -46,9 +46,9 @@ const navigate = useNavigate();
         }}/>
     </div>
    
-    <div>
+    <div className='fp-div'>
     
-    <h5 onClick={forgetPw} className='forgetpw'>Forget Password?</h5>
+    <h8 onClick={forgetPw} className='forgetpw'>Forget Password?</h8>
   
     </div>
          
@@ -62,8 +62,7 @@ const navigate = useNavigate();
     </div>
     
        <button className="signup-button" onClick={createAcc} >Sign Up</button>
-    </div>
-    
+    </div>    
 
     </div>
 

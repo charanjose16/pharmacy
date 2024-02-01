@@ -28,11 +28,11 @@ const navigate=useNavigate()
     </div>
          
     
-    <div className='login-inputs'>
+    <div className='login-inputs col-2'>
         <input className='log-inp' type="email"  placeholder="Enter your email address"  onChange={(event)=>{
                    setEmail(event.target.value)
         }}/>
-        <button onClick={forget} className='register-button'>Reset</button>
+        <button onClick={forget} className='register-button'>Reset Password</button>
     </div>
 
    

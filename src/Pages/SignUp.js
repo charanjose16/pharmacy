@@ -33,10 +33,10 @@ const SignUp = () => {
   return (
     <div className='login-main-div'>
     <div>
-    <h1 className='login-font'>Sign UP</h1>
+    <h1 className='login-font'>Sign Up</h1>
     </div>
-    <div className='login-inputs'>
-        <input className='log-inp' placeholder='Enter your name' type='text' onChange={(event)=>{
+    <div className='login-inputs col-2'>
+        <input className='log-inp ' placeholder='Enter your name' type='text' onChange={(event)=>{
                 setUserName(event.target.value)
         }}></input>
         <input className='log-inp' placeholder='Enter your email' type='email'
@@ -51,8 +51,8 @@ const SignUp = () => {
         }}></input>
         <button onClick={()=>register()} className="register-button">Register</button>
     </div>
-    <div>
-        <h4 className='already-user'>already a user?<span ><a className='alr-user-span' href="/"> Login</a></span></h4>
+    <div className='alr-us'>
+        <h6 className='already-user'>already a user?<span ><a className='alr-user-span' href="/"> Login</a></span></h6>
     </div>
     
     </div>

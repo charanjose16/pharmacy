@@ -6,6 +6,7 @@ import SignUp from "./Pages/SignUp";
 import ForgetPassword from "./Components/ForgetPassword";
 import HomePage from "./Pages/HomePage";
 
+
 function App() {
   return (
     <div className="App">
