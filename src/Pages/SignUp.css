@@ -1,0 +1,36 @@
+.register-button{
+    font-family: 'Montserrat', sans-serif;
+    background-color:#C4E8C2;
+    border-color:#C4E8C2 ;
+    width:235%;
+    margin-top: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 5px;
+    font-size:large;
+    font-weight: 550;
+    color: rgba(1, 16, 11, 0.841);
+}
+.register-button:hover{
+    box-shadow: 5px 3px 30px #C4E8C2;
+}
+.already-user{
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 300px;
+    color: #6BBD99;
+    font-weight:600;
+    cursor: pointer;
+    margin-left: 40px;
+}
+/* .already-user:hover{
+    text-shadow: 0px 2px 15px #6BBD99;
+   
+} */
+.alr-user-span{
+    color: #000000;
+    text-decoration: none;
+}
+.alr-user-span:hover{
+    color: #077a6588;
+    text-shadow: 0px 2px 15px #6BBD99;
+}

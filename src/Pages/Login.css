@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+.create-acc{
+    text-decoration: none;
+    cursor: pointer;
+}
+.login-main-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+}
+.login-font{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+.login-inputs{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.log-inp{
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    border-radius: 5px;
+    border: 2px solid  darkgrey;
+    margin-top: 20px;
+    width: 220%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 20px;
+    
+}
+input::placeholder {
+    font-size: larger;
+}
+.login-button{
+    font-family: 'Montserrat', sans-serif;
+    background-color:#C4E8C2;
+    border-color:#C4E8C2 ;
+    width:104%;
+    margin-top: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 5px;
+    font-size:large;
+    font-weight: 550;
+    color: rgba(1, 16, 11, 0.841);
+}
+.login-button:hover{
+    box-shadow: 5px 3px 30px #C4E8C2;
+}
+.signup-button{
+    font-family: 'Montserrat', sans-serif;
+    background-color:#6BBD99;
+    border-color:#6BBD99;
+    width:104%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 5px;
+    font-size:large;
+    font-weight: 550;
+    color: rgba(1, 16, 11, 0.841);
+    margin-top: 20px;
+}
+.signup-button:hover{
+    box-shadow: 5px 3px 30px #6BBD99;
+}
+.forgetpw{
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 300px;
+    color: #6BBD99;
+    font-weight:600;
+    cursor: pointer;
+}
+.forgetpw:hover{
+    text-shadow: 0px 2px 15px #6BBD99;
+}
+.log-sign{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+hr{
+    height: 0px;
+    border: 1px solid ;
+    width: 170px;
+    color: rgba(0, 0, 0, 0.166);
+}
+.hr-login{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap:30px;
+}
