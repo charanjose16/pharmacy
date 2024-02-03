@@ -33,7 +33,7 @@
     padding-left: 20px;
     
 }
-input::placeholder {
+.log-inp::placeholder {
     font-size: larger;
 }
 @media (max-width:600px){
@@ -45,7 +45,7 @@ input::placeholder {
         margin-left:18%;
         font-size: small;
     }
-    input::placeholder{
+    .log-inp::placeholder{
           font-size: small;
     }
     .hr-login{
