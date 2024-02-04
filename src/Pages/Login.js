@@ -57,9 +57,9 @@ const navigate = useNavigate();
     <div className='log-sign'>
     <button className="login-button" onClick={login}>Login</button>
     <div className='hr-login'>
-    <hr></hr>
+    <hr className='log-hr'></hr>
     <div className='or'>or</div>
-    <hr></hr>
+    <hr className='log-hr'></hr>
     </div>
     
        <button className="signup-button" onClick={createAcc} >Sign Up</button>
