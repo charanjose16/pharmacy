@@ -82,7 +82,7 @@ transition: transform .1s;
     
     display: flex;
     flex-direction: row;
-    gap:30px;
+    gap:50px;
     align-items: center;
 }
 .category-icon{
@@ -121,3 +121,77 @@ transition: transform .1s;
   .dropdown-item:hover{
     text-shadow:0px 1px 10px #12ca7b;
   }
+  .coro-div{
+    margin-top: 20px;
+  }
+  .bestdeal-text{
+    margin-top: 20px;
+    margin-left: 40px;
+  }
+  .grid-container-deal{
+    margin-top: 10px;
+    margin-left: 150px;
+    margin-right: 150px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns:2fr 2fr 2fr 2fr;
+    grid-template-rows: 400px 400px 400px 400px;
+  }
+  .grid-items-deal{
+    border:2px solid #6bbd9946 ;
+    border-radius: 5px;
+  }
+  .deal-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cont-img-div{
+    display: flex;
+    align-items: center;
+  }
+  .deal-cont-pic{
+    width: 150px;
+    height: 250px;
+    object-fit: contain;
+  }
+ .deal-add-to-cart{
+    color: #12ca7b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+    height: 40px;
+    border:2px solid #05c572b4  ;
+    border-radius: 8px;
+    transition: 0.2s;
+   
+ }
+ .deal-cont-p{
+    margin-left: 10%;
+    margin-right: 10%;
+ }
+ .deal-add-to-cart:hover{
+    background-color: #12ca7b;
+    color: aliceblue;
+ }
+ .ad-cart{
+    margin-top: 5px;
+ }
+ .discount-div-deals{
+    display: flex;
+    flex-direction: row;
+    gap:25px;
+    align-items: center;
+ }
+ .deal-old-price{
+    color: rgba(0, 0, 0, 0.325);
+    text-decoration: line-through;
+ }
+.deal-discount{
+    color: #12ca7b;
+}
+::marker{
+ font-size: 0;
+}

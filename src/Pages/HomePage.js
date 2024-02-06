@@ -1,6 +1,8 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css';
 import "./HomePage.css";
+import banner1 from "../assets/banner1.jpg";
+import banner2 from "../assets/banner2.jpg";
+import banner3 from "../assets/banner3.jpg";
 
 
 const HomePage = () => {
@@ -57,6 +59,63 @@ const HomePage = () => {
  </div>
 
     </div>
+
+{/* courousel div */}
+
+<div className='coro-div'>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol className="carousel-indicators">
+    <li data-target="#carouselExampleIndicators"  className="active"></li>
+    <li data-target="#carouselExampleIndicators"  ></li>
+    <li data-target="#carouselExampleIndicators" ></li>
+  </ol>
+  <div className="carousel-inner">
+    <div className="carousel-item active">
+      <img className="d-block w-100" src={banner2} alt="First slide"/>
+    </div>
+    <div className="carousel-item">
+      <img className="d-block w-100" src={banner1} alt="Second slide"/>
+    </div>
+    <div className="carousel-item">
+      <img className="d-block w-100" src={banner3} alt="Third slide"/>
+    </div>
+  </div>
+  <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    
+  </a>
+  <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    
+  </a>
+</div>
+
+</div>
+
+
+<div className='bestdeal-text'><h3>Best Deals</h3></div>
+
+<div className='grid-container-deal'>
+<div className='grid-items-deal'>
+  <div className='deal-content'>
+    <div className='cont-img-div'>
+    <img className='deal-cont-pic' src='https://rukminim2.flixcart.com/image/416/416/xif0q/protein-supplement/f/r/a/whey-protein-biozyme-performance-informed-choice-uk-labdoor-usa-original-imagp7srczchzg22.jpeg?q=70&crop=false'></img>
+    </div>
+    <p className='deal-cont-p'>Muscleblaze Biotin Protein Powder 2kg Power</p>
+    <div className='discount-div-deals'>
+    <h6 className='deal-old-price'>Rs.2850</h6>
+    <h5>Rs.2500</h5>
+    <h6 className='deal-discount'>20% off</h6>
+    </div>
+    <div className='deal-add-to-cart'><h6 className='ad-cart'>Add to Cart</h6></div>
+  </div>
+</div>
+<div className='grid-items-deal'></div>
+<div className='grid-items-deal'></div>
+<div className='grid-items-deal'></div>
+<div className='grid-items-deal'></div>
+</div>
 
 
     
