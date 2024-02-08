@@ -1,4 +1,6 @@
+
 .nav{
+   
     margin-top: 10px;
 display: flex;
 flex-direction: row;
@@ -15,6 +17,10 @@ justify-content: space-around;
     flex-direction: row;
     gap: 10px;
     
+}
+.home-logsign.home-btn-log{
+    padding-left: 12px;
+    padding-right: 12px;
 }
 .nav-item.search{
     gap: 8px;

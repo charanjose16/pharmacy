@@ -5,6 +5,8 @@ import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
 import ForgetPassword from "./Components/ForgetPassword";
 import HomePage from "./Pages/HomePage";
+import ProductDetails from "./Pages/ProductDetails";
+import Header from "./Components/Header";
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Route exact path='/signup' element={<SignUp/>}/>
         <Route exact path='/forgetpw' element={<ForgetPassword/>}/>
         <Route exact path='/home' element={<HomePage/>}/>
+        <Route exact path='/product' element={<ProductDetails/>}/>
+        <Route exact path='/header' element={<Header/>}/>
        </Routes>
     </div>
   );

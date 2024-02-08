@@ -1,13 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./HomePage.css";
 import banner1 from "../assets/banner1.jpg";
 import banner2 from "../assets/banner2.jpg";
 import banner3 from "../assets/banner3.jpg";
+import {collection,getDocs,addDoc,updateDoc,doc,deleteDoc} from "firebase/firestore"
+import { db } from "../firebase-config"
+import { get } from 'jquery';
 
 
 const HomePage = () => {
+const[deals,setDeals]=useState([]);
+const dealsCollectionRef=collection(db,"deals");
+
+
+// const getDealsData = async ()=>{
+//   const res = await getDocs(dealsCollectionRef);
+//   setDeals(res.docs)
+// }
+
+// useEffect(()=>{
+//   getDealsData()
+// },[])
+
+useEffect(()=>{
+  const getDealsData = async ()=>{
+    const res = await getDocs(dealsCollectionRef);
+    setDeals(res.docs.map((doc)=>({...doc.data(),name:doc.data().name,image:doc.data().image,old_price:doc.data().old_price,discount:doc.data().discount})))
+  };
+  getDealsData();
+  
+},[])
+
+const discountPrice=(old_price,discount)=>{
+  return (old_price-(old_price*discount)/100).toFixed(0);
+}
+
   return (
-    <div>
+
+    <div className='main-div'>
+    
     <div className='nav'>
 
         <div className='nav-item' ><h1>pharmacy</h1>
@@ -18,7 +49,7 @@ const HomePage = () => {
         </div>
 
         <div className='nav-item right'>
-        <button className='home-logsign'>Login</button><h4>|</h4>
+        <button className='home-logsign home-btn-log'>Login</button><h4>|</h4>
         <button className='home-logsign'>Sign Up</button>
         </div>
 
@@ -94,28 +125,42 @@ const HomePage = () => {
 </div>
 
 
+
+
 <div className='bestdeal-text'><h3>Best Deals</h3></div>
 
 <div className='grid-container-deal'>
+{deals.map((deal) => (
+
 <div className='grid-items-deal'>
+
+
+
+
   <div className='deal-content'>
     <div className='cont-img-div'>
-    <img className='deal-cont-pic' src='https://rukminim2.flixcart.com/image/416/416/xif0q/protein-supplement/f/r/a/whey-protein-biozyme-performance-informed-choice-uk-labdoor-usa-original-imagp7srczchzg22.jpeg?q=70&crop=false'></img>
+    <img className='deal-cont-pic' src={deal.image}></img>
     </div>
-    <p className='deal-cont-p'>Muscleblaze Biotin Protein Powder 2kg Power</p>
+    
+    <p className='deal-cont-p'>{deal.name}</p>
     <div className='discount-div-deals'>
-    <h6 className='deal-old-price'>Rs.2850</h6>
-    <h5>Rs.2500</h5>
-    <h6 className='deal-discount'>20% off</h6>
+    <h6 className='deal-old-price'>Rs.{deal.old_price}</h6>
+    <h5>Rs.{discountPrice(deal.old_price,deal.discount)}</h5>
+    <h6 className='deal-discount'>{deal.discount}% off</h6>
     </div>
     <div className='deal-add-to-cart'><h6 className='ad-cart'>Add to Cart</h6></div>
+  
   </div>
+
+
 </div>
-<div className='grid-items-deal'></div>
-<div className='grid-items-deal'></div>
-<div className='grid-items-deal'></div>
-<div className='grid-items-deal'></div>
+))}
+
 </div>
+
+
+
+
 
 
     
