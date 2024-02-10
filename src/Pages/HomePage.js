@@ -4,23 +4,20 @@ import banner1 from "../assets/banner1.jpg";
 import banner2 from "../assets/banner2.jpg";
 import banner3 from "../assets/banner3.jpg";
 import {collection,getDocs,addDoc,updateDoc,doc,deleteDoc} from "firebase/firestore"
+import { useNavigate } from 'react-router-dom';
 import { db } from "../firebase-config"
-import { get } from 'jquery';
+
 
 
 const HomePage = () => {
+  const navigate=useNavigate();
 const[deals,setDeals]=useState([]);
 const dealsCollectionRef=collection(db,"deals");
 
 
-// const getDealsData = async ()=>{
-//   const res = await getDocs(dealsCollectionRef);
-//   setDeals(res.docs)
-// }
-
-// useEffect(()=>{
-//   getDealsData()
-// },[])
+const productNavigate=(deal)=>{
+navigate("/product",{state:{deal}})
+}
 
 useEffect(()=>{
   const getDealsData = async ()=>{
@@ -129,10 +126,10 @@ const discountPrice=(old_price,discount)=>{
 
 <div className='bestdeal-text'><h3>Best Deals</h3></div>
 
-<div className='grid-container-deal'>
+<div className='grid-container-deal' >
 {deals.map((deal) => (
 
-<div className='grid-items-deal'>
+<div className='grid-items-deal' onClick={()=>productNavigate(deal)}>
 
 
 

@@ -74,3 +74,42 @@
  .prod-add-cart-text{
 margin-top: 4px;
  }
+ .spl-offer-main{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    margin-top: 30px;
+ }
+ .spl-bajaj{
+    width:650px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    border:2px solid #12ca7a53;
+    border-radius: 10px;
+    align-items: center;
+    gap:10px;
+ }
+ .spl-airtel{
+    width:650px;
+    height: 70px;
+    border:2px solid #12ca7a53;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px
+ }
+ .prod-des-div{
+    border:2px solid #12ca7a53;
+    border-radius: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+    display: flex;
+    flex-direction: column;
+ }
+ .prod-des-p{
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 10px;
+ }
