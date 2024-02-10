@@ -7,6 +7,7 @@ import ForgetPassword from "./Components/ForgetPassword";
 import HomePage from "./Pages/HomePage";
 import ProductDetails from "./Pages/ProductDetails";
 import Header from "./Components/Header";
+import Products from "./Pages/Products";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route exact path='/home' element={<HomePage/>}/>
         <Route exact path='/product' element={<ProductDetails/>}/>
         <Route exact path='/header' element={<Header/>}/>
+        <Route exact path='/productsList' element={<Products/>}/>
        </Routes>
     </div>
   );

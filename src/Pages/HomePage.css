@@ -1,4 +1,10 @@
+span.logo-name{
+    font-family: 'Montserrat', sans-serif;
+    background: -webkit-linear-gradient(#10c107, #024814c2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
+}
 .nav{
    
     margin-top: 10px;
@@ -131,6 +137,10 @@ transition: transform .1s;
     margin-top: 20px;
   }
   .bestdeal-text{
+    display: flex;
+    flex-direction: row;
+    gap: 1220px;
+    align-items: center;
     margin-top: 20px;
     margin-left: 40px;
   }
@@ -141,7 +151,7 @@ transition: transform .1s;
     display: grid;
     gap: 30px;
     grid-template-columns:2fr 2fr 2fr 2fr;
-    grid-template-rows: 400px 400px 400px 400px;
+    grid-template-rows: 400px;
   }
   .grid-items-deal{
     border:2px solid #6bbd9946 ;
@@ -200,4 +210,11 @@ transition: transform .1s;
 }
 ::marker{
  font-size: 0;
+}
+.view-all-deals{
+    transition: 0.1s;
+}
+.view-all-deals:hover{
+    transform: scale(1.1);
+    
 }

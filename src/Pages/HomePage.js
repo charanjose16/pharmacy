@@ -3,6 +3,7 @@ import "./HomePage.css";
 import banner1 from "../assets/banner1.jpg";
 import banner2 from "../assets/banner2.jpg";
 import banner3 from "../assets/banner3.jpg";
+import { Link } from 'react-router-dom';
 import {collection,getDocs,addDoc,updateDoc,doc,deleteDoc} from "firebase/firestore"
 import { useNavigate } from 'react-router-dom';
 import { db } from "../firebase-config"
@@ -38,7 +39,7 @@ const discountPrice=(old_price,discount)=>{
     
     <div className='nav'>
 
-        <div className='nav-item' ><h1>pharmacy</h1>
+        <div className='nav-item' ><h3 >OneYes<span className='logo-name'>Pharmacy</span></h3>
         </div>
 
         <div className='nav-item search'><input  className="home-search" placeholder='search for products'></input>
@@ -124,10 +125,10 @@ const discountPrice=(old_price,discount)=>{
 
 
 
-<div className='bestdeal-text'><h3>Best Deals</h3></div>
+<div className='bestdeal-text'><h3>Best Deals</h3><Link to="/productsList" style={{textDecorationColor:"white"}}><h5 className='view-all-deals' style={{color:"#12ca7b",fontSize:17}} >View all</h5></Link></div>
 
 <div className='grid-container-deal' >
-{deals.map((deal) => (
+{deals.slice(0, 4).map((deal) => (
 
 <div className='grid-items-deal' onClick={()=>productNavigate(deal)}>
 
@@ -149,16 +150,10 @@ const discountPrice=(old_price,discount)=>{
   
   </div>
 
-
 </div>
 ))}
 
 </div>
-
-
-
-
-
 
     
     </div>

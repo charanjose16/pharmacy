@@ -69,7 +69,7 @@
     align-items: center;
  }
  .input-group.quant{
-    width: 100px;
+    width: 110px;
  }
  .prod-add-cart-text{
 margin-top: 4px;
@@ -107,6 +107,7 @@ margin-top: 4px;
     margin-right: 60px;
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
  }
  .prod-des-p{
     margin-left: 60px;
