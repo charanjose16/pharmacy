@@ -14,8 +14,8 @@ const ProductDetails = () => {
     }
     
     const location=useLocation();
-    const {deal} =location.state || {};
-    const discountPrice=(deal.old_price-(deal.old_price*deal.discount)/100).toFixed(0);
+    const {productDet} =location.state || {};
+    const discountPrice=(productDet.old_price-(productDet.old_price*productDet.discount)/100).toFixed(0);
 
      return (
     <div>
@@ -23,14 +23,14 @@ const ProductDetails = () => {
 
         <div className='product-main-grid'>
             <div className='prod-items img'>
-                <img className='prod-image' src={deal.image} width="400" height="400" style={{objectFit:'contain'}}/>
+                <img className='prod-image' src={productDet.image} width="400" height="400" style={{objectFit:'contain'}}/>
             </div>
             <div className='prod-items'>
-                <h3>{deal.name}</h3>  
-                <p className='prod-old-price'>Rs.{deal.old_price}</p>
+                <h3>{productDet.name}</h3>  
+                <p className='prod-old-price'>Rs.{productDet.old_price}</p>
                 <div className='prod-price-dis'>
                 <h5 >Price:  <span className='prod-price'>Rs.{discountPrice}</span></h5> 
-                <p className='prod-dis'>{deal.discount}% off</p>
+                <p className='prod-dis'>{productDet.discount}% off</p>
                 </div>
                 
                 
@@ -60,10 +60,10 @@ const ProductDetails = () => {
 
         <h4>Product Details</h4>
         <div className='prod-des-div'>
-            <p className='prod-des-p'>• {deal.det_1}</p>
-            <p className='prod-des-p'>• {deal.det_2}</p>
-            <p className='prod-des-p'>• {deal.det_3}</p>
-            <p className='prod-des-p'>• {deal.det_4}</p>
+            <p className='prod-des-p'>• {productDet.det_1}</p>
+            <p className='prod-des-p'>• {productDet.det_2}</p>
+            <p className='prod-des-p'>• {productDet.det_3}</p>
+            <p className='prod-des-p'>• {productDet.det_4}</p>
         </div>
     </div>
   )

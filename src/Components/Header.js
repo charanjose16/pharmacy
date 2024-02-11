@@ -5,8 +5,8 @@ const Header = () => {
     <div>
         <div className='nav'>
 
-<div className='nav-item' ><h1>pharmacy</h1>
-</div>
+        <div className='nav-item' ><h3 >OneYes<span className='logo-name'>Pharmacy</span></h3>
+        </div>
 
 <div className='nav-item search'><input  className="home-search" placeholder='search for products'></input>
 <button type="submit" className='home-search-button'>Search</button> 

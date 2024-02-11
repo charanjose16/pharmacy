@@ -22,7 +22,7 @@ const navigate = useNavigate();
   const login=async()=>{
     try{
         await signInWithEmailAndPassword(auth,userEmail,userPassword)
-        navigate("/home")
+        navigate("/")
     }
     catch(error){
         alert("Wrong Email or Password")

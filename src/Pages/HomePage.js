@@ -3,8 +3,7 @@ import "./HomePage.css";
 import banner1 from "../assets/banner1.jpg";
 import banner2 from "../assets/banner2.jpg";
 import banner3 from "../assets/banner3.jpg";
-import { Link } from 'react-router-dom';
-import {collection,getDocs,addDoc,updateDoc,doc,deleteDoc} from "firebase/firestore"
+import {collection,getDocs} from "firebase/firestore"
 import { useNavigate } from 'react-router-dom';
 import { db } from "../firebase-config"
 
@@ -17,17 +16,24 @@ const dealsCollectionRef=collection(db,"deals");
 
 
 const productNavigate=(deal)=>{
-navigate("/product",{state:{deal}})
+navigate("/product",{state:{productDet:deal}})
 }
-
+const login=()=>{
+  navigate("/login")
+}
+const signup=()=>{
+  navigate("/signup")
+}
+const dealProducts=(collectionDataName)=>{
+  navigate("/productsList",{state:{collectionName:collectionDataName}});
+}
 useEffect(()=>{
   const getDealsData = async ()=>{
     const res = await getDocs(dealsCollectionRef);
     setDeals(res.docs.map((doc)=>({...doc.data(),name:doc.data().name,image:doc.data().image,old_price:doc.data().old_price,discount:doc.data().discount})))
   };
   getDealsData();
-  
-},[])
+},[]);
 
 const discountPrice=(old_price,discount)=>{
   return (old_price-(old_price*discount)/100).toFixed(0);
@@ -47,12 +53,12 @@ const discountPrice=(old_price,discount)=>{
         </div>
 
         <div className='nav-item right'>
-        <button className='home-logsign home-btn-log'>Login</button><h4>|</h4>
-        <button className='home-logsign'>Sign Up</button>
+        <button className='home-logsign home-btn-log' onClick={login}>Login</button><h4>|</h4>
+        <button className='home-logsign' onClick={signup}>Sign Up</button>
         </div>
 
         <div className='nav-item cart'>
-            <img className="cart-img" src='https://icons.veryicon.com/png/o/miscellaneous/life-linear-icon/cart-44.png'></img> 
+            <img className="cart-img" src='https://icons.veryicon.com/png/o/miscellaneous/life-linear-icon/cart-44.png' alt='img'></img> 
         </div>
 
     </div>
@@ -66,17 +72,17 @@ const discountPrice=(old_price,discount)=>{
     <div className='home-cat'>
     <div className='dropdown'>
     <div className='dropdown-toggle category-icon' data-mdb-toggle="dropdown" aria-expanded="false"  id="dropdownMenuButton">
-        <img className='cat-icon' src="https://icons.veryicon.com/png/o/miscellaneous/blog-frequently-used/category-19.png" width="20" height="20"/>
+        <img className='cat-icon' src="https://icons.veryicon.com/png/o/miscellaneous/blog-frequently-used/category-19.png" alt='img' width="20" height="20"/>
           <h6 className='shop-cat'>Shop By Category</h6>
     </div>
         
    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Sports Nutrition</a></li>
-    <li><a class="dropdown-item" href="#">Vitamins Supplements</a></li>
-    <li><a class="dropdown-item" href="#">Ayurveda and Herbs</a></li>
-    <li><a class="dropdown-item" href="#">Health Food and Drink</a></li>
-    <li><a class="dropdown-item" href="#">Fitness</a></li>
-    <li><a class="dropdown-item" href="#">Wellness</a></li>
+    <li><h6 class="dropdown-item">Best Deals</h6></li>
+    <li><h6 class="dropdown-item">Vitamins Supplements</h6></li>
+    <li><h6 class="dropdown-item">Ayurveda and Herbs</h6></li>
+    <li><h6 class="dropdown-item">Health Food and Drink</h6></li>
+    <li><h6 class="dropdown-item">Fitness</h6></li>
+    <li><h6 class="dropdown-item">Wellness</h6></li>
   </ul>
     
   </div>
@@ -125,7 +131,10 @@ const discountPrice=(old_price,discount)=>{
 
 
 
-<div className='bestdeal-text'><h3>Best Deals</h3><Link to="/productsList" style={{textDecorationColor:"white"}}><h5 className='view-all-deals' style={{color:"#12ca7b",fontSize:17}} >View all</h5></Link></div>
+<div className='bestdeal-text'>
+<h3>Best Deals</h3>
+<h5 className='view-all-deals' style={{color:"#12ca7b",fontSize:17}} onClick={()=>dealProducts("deals")} >View all</h5>
+</div>
 
 <div className='grid-container-deal' >
 {deals.slice(0, 4).map((deal) => (
@@ -137,7 +146,7 @@ const discountPrice=(old_price,discount)=>{
 
   <div className='deal-content'>
     <div className='cont-img-div'>
-    <img className='deal-cont-pic' src={deal.image}></img>
+    <img className='deal-cont-pic' alt="" src={deal.image}></img>
     </div>
     
     <p className='deal-cont-p'>{deal.name}</p>
