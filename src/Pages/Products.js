@@ -19,11 +19,13 @@ const Products = () => {
     }
     
   useEffect(()=>{
+    console.log("useEffect in");
          const getProductData=async()=>{
           const res=await getDocs(collectionRef);
           setProducts(res.docs.map((doc)=>({...doc.data(),name:doc.data().name,image:doc.data().image,old_price:doc.data().old_price,discount:doc.data().discount})))
          }
          getProductData();
+         console.log("useEffect out");
   },[collectionRef])
 
   const discountPrice=(old_price,discount)=>{

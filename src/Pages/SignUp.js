@@ -22,7 +22,7 @@ const SignUp = () => {
             await createUserWithEmailAndPassword(auth,userEmail,userPassword)
 
             await addDoc(collectionRef,{name:userName,email:userEmail,phone:userNumber})
-            navigate('/')   
+            navigate('/login')   
         }
         catch(error){
             alert(error.message);

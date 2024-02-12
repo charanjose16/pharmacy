@@ -1,21 +1,79 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth, db } from '../firebase-config';
+import { onAuthStateChanged } from 'firebase/auth';
+import {collection} from "firebase/firestore"
 
 const Header = () => {
+  const [user, setUser] = useState("");
+  const [isLoggedIn,setIsLoggedIn]=useState(false);
+  console.log(user);
+  const login=()=>{
+    navigate("/login")
+  }
+  const signup=()=>{
+    navigate("/signup")
+  }
+
+  useEffect(() => {
+    const unsubscribeAuth = onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        fetchUserData(authUser.uid);
+        setIsLoggedIn(true);
+      } else {
+        setUser(null);
+        setIsLoggedIn(false);
+      }
+    });
+    return () => unsubscribeAuth();
+  }, []);
+  const fetchUserData = async (uid) => {
+    try {
+      const userDoc = await db.collection('users').doc(uid).get();
+      if (userDoc.exists()) {
+        setUser({ uid, ...userDoc.data(),name:userDoc.data().name});
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      setUser(null);
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+  const navigate=useNavigate();
+  
+  const dealProducts=(collectionDataName)=>{
+    navigate("/productsList",{state:{collectionName:collectionDataName}});
+  }
+  const logoHome=()=>{
+    navigate('/')
+  }
   return (
     <div>
         <div className='nav'>
 
-        <div className='nav-item' ><h3 >OneYes<span className='logo-name'>Pharmacy</span></h3>
+        <div className='nav-item' onClick={logoHome}><h3 >OneYes<span className='logo-name'>Pharmacy</span></h3>
         </div>
 
 <div className='nav-item search'><input  className="home-search" placeholder='search for products'></input>
 <button type="submit" className='home-search-button'>Search</button> 
 </div>
+{isLoggedIn?(<div>
+              <span className='username'><h5>{user.name}</h5></span>
+              <button className='home-logsign' onClick={handleLogout}>Logout</button>
+            </div>):
+            (<div className='nav-item right'>
+<button className='home-logsign home-btn-log' onClick={login}>Login</button><h4>|</h4>
+<button className='home-logsign' onClick={signup}>Sign Up</button>
+</div>) }
 
-<div className='nav-item right'>
-<button className='home-logsign home-btn-log'>Login</button><h4>|</h4>
-<button className='home-logsign'>Sign Up</button>
-</div>
 
 <div className='nav-item cart'>
     <img className="cart-img" src='https://icons.veryicon.com/png/o/miscellaneous/life-linear-icon/cart-44.png'></img> 
@@ -37,13 +95,17 @@ const Header = () => {
 </div>
 
 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<li><a class="dropdown-item" href="#">Sports Nutrition</a></li>
-<li><a class="dropdown-item" href="#">Vitamins Supplements</a></li>
-<li><a class="dropdown-item" href="#">Ayurveda and Herbs</a></li>
-<li><a class="dropdown-item" href="#">Health Food and Drink</a></li>
-<li><a class="dropdown-item" href="#">Fitness</a></li>
-<li><a class="dropdown-item" href="#">Wellness</a></li>
-</ul>
+    <li><h6 class="dropdown-item" onClick={()=>{
+      dealProducts("deals")
+    }}>Best Deals</h6></li>
+    <li><h6 class="dropdown-item"  onClick={()=>{
+      dealProducts("supplements")
+    }}>Supplements</h6></li>
+    <li><h6 class="dropdown-item">Ayurveda and Herbs</h6></li>
+    <li><h6 class="dropdown-item">Health Food and Drink</h6></li>
+    <li><h6 class="dropdown-item">Fitness</h6></li>
+    <li><h6 class="dropdown-item">Wellness</h6></li>
+  </ul>
 
 </div>
 

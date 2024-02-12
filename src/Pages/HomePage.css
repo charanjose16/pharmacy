@@ -17,6 +17,7 @@ justify-content: space-around;
 }
 .nav-item{
     display: flex;
+    cursor: pointer;
 }
 .nav-item.right{
     display: flex;
@@ -125,6 +126,9 @@ transition: transform .1s;
 .dropdown:hover>.dropdown-menu {
     display: block;
   }
+.dropdown-item{
+    cursor: pointer;
+}
   
   .dropdown>.dropdown-toggle:active {
     /*Without this, clicking will make it sticky*/
