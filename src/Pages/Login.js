@@ -21,14 +21,20 @@ const navigate = useNavigate();
 
   const login=async()=>{
     try{
+      if(userEmail==="" || userPassword==="") alert("Please enter all fields");
         await signInWithEmailAndPassword(auth,userEmail,userPassword)
         navigate("/")
     }
     catch(error){
-        alert("Wrong Email or Password")
-    }
+        if(error.code==='auth/invalid-credential'){
+         alert("Email or password is wrong");
+        }   
+        else if (error.code === 'auth/invalid-email') {
+          alert("Enter valid Email address");
+       }
        
   }
+}
 
   return (
     <div className='login-main-div'>

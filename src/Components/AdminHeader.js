@@ -1,7 +1,12 @@
 import React from 'react'
 import "./AdminHeader.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { useNavigate } from 'react-router-dom';
 const AdminHeader = () => {
+  const navigate=useNavigate();
+  const sidebars=(route)=>{
+    navigate(`/${route}`)
+  }
   return (
     <div>
 
@@ -19,8 +24,8 @@ const AdminHeader = () => {
   </div>
   <div className="offcanvas-body">
     <div className='sidebar-main-div'>
-        <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/application/reconsortia-icons/dashboard-87.png' height="25" width="25"></img><h6>Dashboard</h6></div>
-        <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/business/official-website-monochrome-icon/other-products-1.png' height="25" width="25"></img><h6>Products</h6></div>
+        <div className='sidebar-list-div' onClick={()=>{sidebars('admin')}}><img src='https://icons.veryicon.com/png/o/application/reconsortia-icons/dashboard-87.png' height="25" width="25"></img><h6>Dashboard</h6></div>
+        <div className='sidebar-list-div' onClick={()=>{sidebars('adminProducts')}}><img src='https://icons.veryicon.com/png/o/business/official-website-monochrome-icon/other-products-1.png' height="25" width="25" ></img><h6>Products</h6></div>
         <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/miscellaneous/h5-general-system-icon/orders-5.png' height="25" width="25"></img><h6>Orders</h6></div>
         <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/business/general-icon-of-customer-wealth-r-d-center/khcfdc-uu-customers.png' height="25" width="25"></img><h6>Customers</h6></div>
         <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/healthcate-medical/at-icon-library/feedback-18.png' height="25" width="25"></img><h6>Reviews</h6></div>
