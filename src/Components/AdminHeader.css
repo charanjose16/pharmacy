@@ -1,0 +1,45 @@
+.admin-header-div{
+    height: 60px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(127, 255, 212, 0.192);
+}
+.admin-sidebar-img{
+    margin-left: 20px;
+}
+.admin-logout-button{
+    background-color:#6BBD99;
+    border-color:#6BBD99;
+    margin-right: 40px;
+}
+.admin-logout-button:hover{
+    background-color: #6BBD99;
+    border-color:#6BBD99;
+    box-shadow: 0px 0px 20px #6BBD99;
+    transform: scale(1.1);
+}
+.sidebar-main-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.sidebar-list-div{
+    display: flex;
+    flex-direction: row;
+    gap:30px;
+    height: 45px;
+    align-items: center;
+    padding-left: 20px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.sidebar-list-div:hover{
+    background-color: #6bbd99;
+    border-radius: 10px;
+    color: aliceblue;
+}
+.sidebar-admin-text{
+    color: #46c28c
+}

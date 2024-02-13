@@ -26,7 +26,7 @@ const Products = () => {
          }
          getProductData();
          console.log("useEffect out");
-  },[collectionRef])
+  },[collectionName])
 
   const discountPrice=(old_price,discount)=>{
     return (old_price-(old_price*discount)/100).toFixed(0);
@@ -36,7 +36,9 @@ const Products = () => {
   return (
     <div>
         <Header></Header>
+        <h3 className='prod-head'>{collectionName}:</h3>
         <div className='grid-container-deal' >
+      
 {products.map((product) => (
 
 <div className='grid-items-deal' onClick={()=>productNavigate(product)}>

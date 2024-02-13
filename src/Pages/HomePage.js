@@ -7,6 +7,8 @@ import {collection,getDocs} from "firebase/firestore"
 import { useNavigate } from 'react-router-dom';
 import { db } from "../firebase-config"
 import Header from '../Components/Header';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import "bootstrap/js/dist/carousel"
 
 
 const HomePage = () => {
@@ -73,11 +75,11 @@ const discountPrice=(old_price,discount)=>{
       <img className="d-block w-100" src={banner3} alt="Third slide"/>
     </div>
   </div>
-  <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <a className="carousel-control-prev" data-bs-target="#carouselExampleIndicators" role="button" data-slide="prev" >
     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
     
   </a>
-  <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <a className="carousel-control-next" data-bs-target="#carouselExampleIndicators" role="button" data-slide="next">
     <span className="carousel-control-next-icon" aria-hidden="true"></span>
     
   </a>

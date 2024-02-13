@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
-import {collection} from "firebase/firestore"
+import {collection} from "firebase/firestore";
+
 
 const Header = () => {
   const [user, setUser] = useState("");
