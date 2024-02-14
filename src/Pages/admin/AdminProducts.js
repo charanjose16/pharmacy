@@ -17,14 +17,14 @@ const navigate=useNavigate();
 useEffect(()=>{
   const getDealsData=async()=>{
     const res=await getDocs(dealsCollectionRef);
-    setDeals(res.docs.map((doc)=>({...doc.data(),name:doc.data().name,image:doc.data().image,old_price:doc.data().old_price,discount:doc.data().discount,quantity:doc.data().quantity,id:doc.data().id})))
+    setDeals(res.docs.map((doc)=>({...doc.data(),name:doc.data().name,image:doc.data().image,old_price:doc.data().old_price,discount:doc.data().discount,quantity:doc.data().quantity,id:doc.id})))
   }
   getDealsData();
 },[])
 useEffect(()=>{
   const getSupplementsData=async()=>{
     const res=await getDocs(supplementsCollectionRef);
-    setSupplements(res.docs.map((doc)=>({...doc.data(),name:doc.data().name,image:doc.data().image,old_price:doc.data().old_price,discount:doc.data().discount,quantity:doc.data().quantity})))
+    setSupplements(res.docs.map((doc)=>({...doc.data(),name:doc.data().name,image:doc.data().image,old_price:doc.data().old_price,discount:doc.data().discount,quantity:doc.data().quantity,id:doc.id})))
   }
   getSupplementsData();
 },[])
@@ -93,7 +93,7 @@ const discountPrice=(old_price,discount)=>{
         </div>
         <p>Price: <span className='prodcard-pri'>Rs. {discountPrice(deal.old_price,deal.discount)}</span></p>
         <div className='prod-card-edit-rem'>
-        <button className='btn btn-dark remove-product'>Edit</button>
+        <button className='btn btn-dark remove-product' onClick={()=>{editPage(deal,"supplements")}}>Edit</button>
         <button className='btn btn-danger remove-product'>Remove Product</button>
         </div>
         </div>
