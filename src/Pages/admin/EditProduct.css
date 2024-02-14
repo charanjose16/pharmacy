@@ -1,0 +1,42 @@
+.upd-prod-change{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   align-items: center;
+    gap:10px
+}
+.upd-pro-image-text{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.upd-prod-change-div{
+    margin-top: 30px;
+}
+input.upd-pro-inp{
+    height:35px;
+    width: 60%;
+    border-radius: 5px;
+    border-color:rgba(30, 195, 121, 0.353);
+}
+.old-pric-change{
+    margin-right: 30px;
+}
+.upd-pro-change-button{
+    background-color:#6BBD99;
+    border-color:#6BBD99;
+    transition: 0.1s;
+}
+.upd-pro-change-button:hover{
+    background-color: #6BBD99;
+    border-color:#6BBD99;
+    box-shadow: 0px 0px 20px #6BBD99;
+    transform: scale(1.1);
+}
+.btn.btn-primary.upd-pro-change-button:active{
+    background-color: #428367;
+    border-color:#428367;
+}

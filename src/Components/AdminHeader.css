@@ -20,6 +20,10 @@
     box-shadow: 0px 0px 20px #6BBD99;
     transform: scale(1.1);
 }
+.btn.btn-primary.admin-logout-button:active{
+    background-color: #428367;
+    border-color:#428367;
+}
 .sidebar-main-div{
     display: flex;
     flex-direction: column;

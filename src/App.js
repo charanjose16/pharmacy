@@ -11,6 +11,7 @@ import Products from "./Pages/Products";
 import AdminPage from "./Pages/admin/AdminPage";
 import AdminHeader from "./Components/AdminHeader";
 import AdminProducts from "./Pages/admin/AdminProducts";
+import EditProduct from "./Pages/admin/EditProduct";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route exact path='/admin' element={<AdminPage/>}/>
         <Route exact path='/adminHeader' element={<AdminHeader/>}/>
         <Route exact path='/adminProducts' element={<AdminProducts/>}/>
+        <Route exact path='/editProduct' element={<EditProduct/>}/>
        </Routes>
     </div>
   );
