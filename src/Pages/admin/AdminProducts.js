@@ -5,6 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import { collection,getDocs } from 'firebase/firestore';
 import { db } from "../../firebase-config";
 import { useNavigate } from 'react-router-dom';
+import AddSearchHeader from '../../Components/AddSearchHeader';
 
 const AdminProducts = () => {
 
@@ -13,6 +14,10 @@ const [supplements,setSupplements]=useState([]);
 const dealsCollectionRef=collection(db,"deals");
 const supplementsCollectionRef=collection(db,"supplements");
 const navigate=useNavigate();
+
+const viewAll=(collName)=>{
+  navigate("/allProducts",{state:{products:collName}})
+}
 
 useEffect(()=>{
   const getDealsData=async()=>{
@@ -41,19 +46,11 @@ const discountPrice=(old_price,discount)=>{
   return (
     <div>
     <AdminHeader></AdminHeader>
-    <div>
-      <div className='admin-prod-add-div'>
-          <div><button className='btn btn-primary admin-add-button' onClick={()=>{navigate("/AddProducts")}}>+ Add products</button></div>
-          <div><div className='nav-item search'><input  className="home-search" placeholder='search for products'></input>
-             <button type="submit" className='home-search-button'>Search</button> 
-         </div></div>
-      </div>
-    </div>
-     
+     <AddSearchHeader></AddSearchHeader>
 
     <div className='prodcard-all'>
    
-      <div className='prodcard-head-viewall'><h3>Deals</h3> <h5 className='prodcard-viwal'>View all</h5> </div>
+      <div className='prodcard-head-viewall'><h3>Deals</h3> <h5 className='prodcard-viwal' onClick={()=>{viewAll("deals")}}>View all</h5> </div>
       
       <div  className='product-card-container'>
       {deals.slice(0,3).map((deal)=>(
@@ -77,7 +74,7 @@ const discountPrice=(old_price,discount)=>{
       </div>
 
 
-      <div className='prodcard-head-viewall'><h3>Supplements</h3> <h5 className='prodcard-viwal'>View all</h5> </div>
+      <div className='prodcard-head-viewall'><h3>Supplements</h3> <h5 className='prodcard-viwal' onClick={()=>{viewAll("supplements")}}>View all</h5> </div>
       
       <div  className='product-card-container'>
       {supplements.slice(0,3).map((deal)=>(

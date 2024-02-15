@@ -13,6 +13,8 @@ import AdminHeader from "./Components/AdminHeader";
 import AdminProducts from "./Pages/admin/AdminProducts";
 import EditProduct from "./Pages/admin/EditProduct";
 import AddProducts from "./Pages/admin/AddProducts";
+import AllProducts from "./Pages/admin/AllProducts";
+import AddSearchHeader from "./Components/AddSearchHeader";
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
         <Route exact path='/adminProducts' element={<AdminProducts/>}/>
         <Route exact path='/editProduct' element={<EditProduct/>}/>
         <Route exact path='/addProducts' element={<AddProducts/>}/>
+        <Route exact path='/allProducts' element={<AllProducts/>}/>
+        <Route exact path='/addSearch' element={<AddSearchHeader/>}/>
        </Routes>
     </div>
   );

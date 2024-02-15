@@ -6,7 +6,6 @@ import { collection,addDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 
-
 const AddProducts = () => {
 
     const navigate=useNavigate();
@@ -23,6 +22,7 @@ const [desc3,setDesc3]=useState("")
 const [desc4,setDesc4]=useState("")
 const collectionRef = collection(db,collectionName);
 
+
 const addProduct=async()=>{
     await addDoc(collectionRef,{name:name,image:imageUrl,old_price:Number(oldPrice),discount:Number(discount),quantity:Number(quantity),det_1:desc1,det_2:desc2,det_3:desc3,det_4:desc4});
     navigate("/adminProducts")
@@ -33,6 +33,7 @@ const addProduct=async()=>{
   return (
     <div>
     <AdminHeader></AdminHeader>
+   
   
      <div className='add-prod-main-div'>
 
