@@ -24,6 +24,8 @@ const ProductDetails = () => {
         <div className='product-main-grid'>
             <div className='prod-items img'>
                 <img className='prod-image' src={productDet.image} width="400" height="400" style={{objectFit:'contain'}}/>
+                <img className='fav-icon' src='https://icons.veryicon.com/png/o/commerce-shopping/fine-edition-mall-icon/wishlist-1.png' height="40" width="40"></img>
+
             </div>
             <div className='prod-items'>
                 <h3>{productDet.name}</h3>  

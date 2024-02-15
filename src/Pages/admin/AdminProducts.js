@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./AdminProducts.css"
 import AdminHeader from "../../Components/AdminHeader";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { collection,getDocs } from 'firebase/firestore';
+import { collection,getDocs,deleteDoc,doc } from 'firebase/firestore';
 import { db } from "../../firebase-config";
 import { useNavigate } from 'react-router-dom';
 import AddSearchHeader from '../../Components/AddSearchHeader';
@@ -34,6 +34,12 @@ useEffect(()=>{
   getSupplementsData();
 },[])
 
+const deleteProduct=async(id,collecName)=>{
+  const prodId=doc(db,collecName,id)
+  await deleteDoc(prodId);
+  alert("Product has been deleted!");
+  window.location.reload();
+}
 const editPage=(deal,coll_name)=>{
   navigate("/editProduct",{state: {productId:deal,colName:coll_name}})
 }
@@ -67,7 +73,7 @@ const discountPrice=(old_price,discount)=>{
         <p>Price: <span className='prodcard-pri'>Rs. {discountPrice(deal.old_price,deal.discount)}</span></p>
         <div className='prod-card-edit-rem'>
         <button className='btn btn-dark remove-product' onClick={()=>{editPage(deal,"deals")}}>Edit</button>
-        <button className='btn btn-danger remove-product'>Remove Product</button>
+        <button className='btn btn-danger remove-product' onClick={()=>{deleteProduct(deal.id,"deals")}}>Remove Product</button>
         </div>
         </div>
         ))}
@@ -91,7 +97,7 @@ const discountPrice=(old_price,discount)=>{
         <p>Price: <span className='prodcard-pri'>Rs. {discountPrice(deal.old_price,deal.discount)}</span></p>
         <div className='prod-card-edit-rem'>
         <button className='btn btn-dark remove-product' onClick={()=>{editPage(deal,"supplements")}}>Edit</button>
-        <button className='btn btn-danger remove-product'>Remove Product</button>
+        <button className='btn btn-danger remove-product' onClick={()=>{deleteProduct(deal.id,"supplements")}}>Remove Product</button>
         </div>
         </div>
         ))}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation ,useNavigate} from 'react-router-dom';
 import { db } from '../../firebase-config';
-import { collection,getDocs } from 'firebase/firestore';
+import { collection,getDocs ,deleteDoc,doc} from 'firebase/firestore';
 import AdminHeader from '../../Components/AdminHeader';
 import AddSearchHeader from '../../Components/AddSearchHeader';
 
@@ -26,6 +26,13 @@ useEffect(()=>{
     navigate("/editProduct",{state: {productId:deal,colName:coll_name}})
   }
   
+  const deleteProduct=async(id)=>{
+    const prodId=doc(db,products,id)
+    await deleteDoc(prodId);
+    alert("Product has been deleted!");
+    window.location.reload();
+  }
+
   const discountPrice=(old_price,discount)=>{
     return (old_price-(old_price*discount)/100).toFixed(0);
   }
@@ -51,7 +58,7 @@ useEffect(()=>{
         <p>Price: <span className='prodcard-pri'>Rs. {discountPrice(deal.old_price,deal.discount)}</span></p>
         <div className='prod-card-edit-rem'>
         <button className='btn btn-dark remove-product' onClick={()=>{editPage(deal,"deals")}}>Edit</button>
-        <button className='btn btn-danger remove-product'>Remove Product</button>
+        <button className='btn btn-danger remove-product' onClick={()=>{deleteProduct(deal.id)}}>Remove Product</button>
         </div>
         </div>
         ))}

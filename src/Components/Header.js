@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import {collection} from "firebase/firestore";
+import "bootstrap/dist/js/bootstrap.bundle"
 
 
 const Header = () => {
@@ -59,6 +60,26 @@ const Header = () => {
   return (
     <div>
         <div className='nav'>
+        <img className='admin-sidebar-img' type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" 
+    aria-controls="offcanvasWithBothOptions" src='https://icons.veryicon.com/png/o/application/font-awesome/bars-3.png' width="30" height="30"></img>
+
+        <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div className="offcanvas-header">
+    <h5 className="offcanvas-title sidebar-admin-text" id="offcanvasWithBothOptionsLabel" >OneYes Pharmacy</h5>
+    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div className="offcanvas-body">
+    <div className='sidebar-main-div'>
+        <div className='sidebar-list-div' ><img src='https://icons.veryicon.com/png/o/commerce-shopping/dream-icon-library/home-199.png' height="25" width="25"></img><h6>Home</h6></div>
+        <div className='sidebar-list-div' ><img src='https://icons.veryicon.com/png/o/miscellaneous/linear-icon-27/star-140.png' height="25" width="25" ></img><h6>Wishlist</h6></div>
+        <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/commerce-shopping/poly-budget-icon-library/cart-25.png' height="25" width="25"></img><h6>My Cart</h6></div>
+        <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/miscellaneous/h5-general-system-icon/orders-5.png' height="25" width="25"></img><h6>Orders</h6></div>
+        <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/business/general-icon-of-customer-wealth-r-d-center/khcfdc-uu-customers.png' height="25" width="25"></img><h6>Customer support</h6></div>
+        <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/healthcate-medical/at-icon-library/feedback-18.png' height="25" width="25"></img><h6>Reviews</h6></div>
+        
+    </div>
+  </div>
+</div>
 
         <div className='nav-item' onClick={logoHome}><h3 >OneYes<span className='logo-name'>Pharmacy</span></h3>
         </div>
@@ -91,7 +112,6 @@ const Header = () => {
 <div className='home-cat'>
 <div className='dropdown'>
 <div className='dropdown-toggle category-icon' data-mdb-toggle="dropdown" aria-expanded="false"  id="dropdownMenuButton">
-<img className='cat-icon' src="https://icons.veryicon.com/png/o/miscellaneous/blog-frequently-used/category-19.png" width="20" height="20"/>
   <h6 className='shop-cat'>Shop By Category</h6>
 </div>
 

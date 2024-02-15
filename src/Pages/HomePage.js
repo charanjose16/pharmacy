@@ -9,6 +9,9 @@ import { db } from "../firebase-config"
 import Header from '../Components/Header';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import "bootstrap/js/dist/carousel"
+import 'font-awesome/css/font-awesome.min.css';
+
+
 
 
 const HomePage = () => {
@@ -18,6 +21,12 @@ const[supplements,setSupplements]=useState([])
 const dealsCollectionRef=collection(db,"deals");
 const supplementsCollectionRef=collection(db,"supplements");
 
+
+const [selectedDeal, setSelectedDeal] = useState(null);
+
+  const handleFavouriteClick = (deal) => {
+    setSelectedDeal(deal);
+  };
 const productNavigate=(deal)=>{
 navigate("/product",{state:{productDet:deal}})
 }
@@ -98,15 +107,24 @@ const discountPrice=(old_price,discount)=>{
 <div className='grid-container-deal' >
 {deals.slice(0, 4).map((deal) => (
 
-<div className='grid-items-deal' onClick={()=>productNavigate(deal)}>
+<div className='grid-items-deal'>
 
 
 
 
   <div className='deal-content'>
     <div className='cont-img-div'>
-    <img className='deal-cont-pic' alt="" src={deal.image}></img>
+    <img className='deal-cont-pic' alt="" src={deal.image}  onClick={()=>productNavigate(deal)}></img>
+
+    <div className='fav-star'>
+    <div className={`click ${selectedDeal === deal ? 'active active-2 active-3' : ''}`} onClick={() => handleFavouriteClick(deal)}>
+                  <span className={`fa ${selectedDeal === deal ? 'fa-star' : 'fa-star-o'}`}></span>
+                  <div className="ring"></div>
+                  <div className="ring2"></div>
     </div>
+    </div>
+
+              </div>
     
     <p className='deal-cont-p'>{deal.name}</p>
     <div className='discount-div-deals'>
@@ -124,7 +142,7 @@ const discountPrice=(old_price,discount)=>{
 </div>
 
 
-<div className='bestdeal-text'>
+<div className='bestdeal-text supps'>
 <h3>Supplements</h3>
 <h5 className='view-all-deals' style={{color:"#12ca7b",fontSize:17}} onClick={()=>dealProducts("supplements")} >View all</h5>
 </div>
@@ -132,14 +150,21 @@ const discountPrice=(old_price,discount)=>{
 <div className='grid-container-deal' >
 {supplements.slice(0, 4).map((deal) => (
 
-<div className='grid-items-deal' onClick={()=>productNavigate(deal)}>
+<div className='grid-items-deal'>
 
 
 
 
   <div className='deal-content'>
     <div className='cont-img-div'>
-    <img className='deal-cont-pic' alt="" src={deal.image}></img>
+    <img className='deal-cont-pic' alt="" src={deal.image}  onClick={()=>productNavigate(deal)}></img>
+ <div className='fav-star'>
+    <div className={`click ${selectedDeal === deal ? 'active active-2 active-3' : ''}`} onClick={() => handleFavouriteClick(deal)}>
+                  <span className={`fa ${selectedDeal === deal ? 'fa-star' : 'fa-star-o'}`}></span>
+                  <div className="ring"></div>
+                  <div className="ring2"></div>
+    </div>
+    </div>
     </div>
     
     <p className='deal-cont-p'>{deal.name}</p>

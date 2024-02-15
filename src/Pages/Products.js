@@ -13,6 +13,11 @@ const Products = () => {
   const [products,setProducts]=useState([]);
   const navigate=useNavigate();
 
+  const [selectedDeal, setSelectedDeal] = useState(null);
+
+  const handleFavouriteClick = (deal) => {
+    setSelectedDeal(deal);
+  };
 
   const productNavigate=(product)=>{
     navigate("/product",{state:{productDet:product}})
@@ -41,15 +46,21 @@ const Products = () => {
       
 {products.map((product) => (
 
-<div className='grid-items-deal' onClick={()=>productNavigate(product)}>
+<div className='grid-items-deal' >
 
 
 
 
   <div className='deal-content'>
     <div className='cont-img-div'>
-    <img className='deal-cont-pic' src={product.image} alt='img'></img>
+    <img className='deal-cont-pic' src={product.image} alt='img' onClick={()=>productNavigate(product)}></img>
+    <div className='fav-star'>
+    <div className={`click ${selectedDeal === product ? 'active active-2 active-3' : ''}`} onClick={() => handleFavouriteClick(product)}>
+                  <span className={`fa ${selectedDeal === product ? 'fa-star' : 'fa-star-o'}`}></span>
+                  <div className="ring"></div>
+                  <div className="ring2"></div>
     </div>
+    </div>    </div>
     
     <p className='deal-cont-p'>{product.name}</p>
     <div className='discount-div-deals'>
