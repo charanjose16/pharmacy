@@ -43,7 +43,7 @@ const discountPrice=(old_price,discount)=>{
     <AdminHeader></AdminHeader>
     <div>
       <div className='admin-prod-add-div'>
-          <div><button className='btn btn-primary admin-add-button'>+ Add products</button></div>
+          <div><button className='btn btn-primary admin-add-button' onClick={()=>{navigate("/AddProducts")}}>+ Add products</button></div>
           <div><div className='nav-item search'><input  className="home-search" placeholder='search for products'></input>
              <button type="submit" className='home-search-button'>Search</button> 
          </div></div>
@@ -59,13 +59,13 @@ const discountPrice=(old_price,discount)=>{
       {deals.slice(0,3).map((deal)=>(
         <div className='prod-card-grid-items'>
         <div className='admin-prod-card-img-quan '>
-        <img src={deal.image} width="140" height="140" style={{objectFit:"contain"}}></img>
+        <img src={deal.image} width="140" height="140" style={{objectFit:"contain"}} alt=''></img>
         <h6>Quantity Remaining: {deal.quantity}</h6> 
         </div>
         <h6 className='prodcard-prod-name'>{deal.name}</h6>
         <div className='prodcard-mrp-dis'>
         <p className='product-card-mrp'>MRP.{deal.old_price}</p>
-        <p>Discount:<span className='prodcard-dis'>{deal.discount}% off</span> </p>
+        <p>Discount: <span className='prodcard-dis'>{deal.discount}% off</span> </p>
         </div>
         <p>Price: <span className='prodcard-pri'>Rs. {discountPrice(deal.old_price,deal.discount)}</span></p>
         <div className='prod-card-edit-rem'>
@@ -83,13 +83,13 @@ const discountPrice=(old_price,discount)=>{
       {supplements.slice(0,3).map((deal)=>(
         <div className='prod-card-grid-items'>
         <div className='admin-prod-card-img-quan '>
-        <img src={deal.image} width="140" height="140" style={{objectFit:"contain"}}></img>
+        <img src={deal.image} width="140" height="140" style={{objectFit:"contain"}} alt=''></img>
         <h6>Quantity Remaining: {deal.quantity}</h6> 
         </div>
         <h6 className='prodcard-prod-name'>{deal.name}</h6>
         <div className='prodcard-mrp-dis'>
         <p className='product-card-mrp'>MRP.{deal.old_price}</p>
-        <p>Discount:<span className='prodcard-dis'>{deal.discount}% off</span> </p>
+        <p>Discount: <span className='prodcard-dis'>{deal.discount}% off</span> </p>
         </div>
         <p>Price: <span className='prodcard-pri'>Rs. {discountPrice(deal.old_price,deal.discount)}</span></p>
         <div className='prod-card-edit-rem'>

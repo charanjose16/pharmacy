@@ -1,0 +1,31 @@
+.add-prod-main-div{
+    display: flex;
+    flex-direction: column; 
+    margin-top: 40px;
+    gap: 20px;
+}
+.add-prod-sep-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   
+}
+.add-prod-inp{
+    border:2px solid #6bbd9946;
+    width: 60%;
+    border-radius: 5px;
+}
+.dropdown.add-prod-sep-div{
+    border:2px solid #6bbd9946;
+    width: 922px;
+    border-radius: 5px;
+}
+.dropdown-item.add-prod:active{
+background-color:#48c08c;
+}
+.add-pro{
+    margin-left: 42%;
+    width: 280px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}

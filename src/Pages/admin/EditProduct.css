@@ -40,3 +40,18 @@ input.upd-pro-inp{
     background-color: #428367;
     border-color:#428367;
 }
+.des-edit-change{
+    margin-right: 76px;
+}
+textarea.upd-pro-inp.des{
+    height: 100px;
+    width: 60%;
+    border:2px solid rgba(30, 195, 121, 0.353);
+    border-radius: 5px;
+}
+.prod-update{
+    margin-left: 42%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    width: 15%;
+}

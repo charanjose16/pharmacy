@@ -12,6 +12,7 @@ import AdminPage from "./Pages/admin/AdminPage";
 import AdminHeader from "./Components/AdminHeader";
 import AdminProducts from "./Pages/admin/AdminProducts";
 import EditProduct from "./Pages/admin/EditProduct";
+import AddProducts from "./Pages/admin/AddProducts";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route exact path='/adminHeader' element={<AdminHeader/>}/>
         <Route exact path='/adminProducts' element={<AdminProducts/>}/>
         <Route exact path='/editProduct' element={<EditProduct/>}/>
+        <Route exact path='/addProducts' element={<AddProducts/>}/>
        </Routes>
     </div>
   );
