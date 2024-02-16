@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./Products.css";
 import Header from "../Components/Header"
 import { useLocation ,useNavigate} from 'react-router-dom';
-import { getDocs,collection } from 'firebase/firestore';
+import { getDocs,collection,addDoc } from 'firebase/firestore';
 import {db} from "../firebase-config";
 
 
@@ -23,6 +23,12 @@ const Products = () => {
     navigate("/product",{state:{productDet:product}})
     }
     
+    const addToWishlist=async(prodData)=>{
+      const collecRef=collection(db,"cart");
+      await addDoc(collecRef,{name:prodData.name,image:prodData.image,old_price:prodData.old_price,discount:prodData.discount,quantity:prodData.quantity,det_1:prodData.det_1,det_2:prodData.det_2,det_3:prodData.det_3,det_4:prodData.det_4})
+    
+    }
+
   useEffect(()=>{
     console.log("useEffect in");
          const getProductData=async()=>{
@@ -54,8 +60,8 @@ const Products = () => {
   <div className='deal-content'>
     <div className='cont-img-div'>
     <img className='deal-cont-pic' src={product.image} alt='img' onClick={()=>productNavigate(product)}></img>
-    <div className='fav-star'>
-    <div className={`click ${selectedDeal === product ? 'active active-2 active-3' : ''}`} onClick={() => handleFavouriteClick(product)}>
+   <div className='fav-star'>
+    <div className={`click ${selectedDeal === product ? 'active active-2 active-3' : ''}`} onClick={() => {handleFavouriteClick(product); addToWishlist(product)}}>
                   <span className={`fa ${selectedDeal === product ? 'fa-star' : 'fa-star-o'}`}></span>
                   <div className="ring"></div>
                   <div className="ring2"></div>

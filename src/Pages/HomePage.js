@@ -3,7 +3,7 @@ import "./HomePage.css";
 import banner1 from "../assets/banner1.jpg";
 import banner2 from "../assets/banner2.jpg";
 import banner3 from "../assets/banner3.jpg";
-import {collection,getDocs} from "firebase/firestore"
+import {collection,getDocs,addDoc} from "firebase/firestore"
 import { useNavigate } from 'react-router-dom';
 import { db } from "../firebase-config"
 import Header from '../Components/Header';
@@ -31,6 +31,12 @@ const productNavigate=(deal)=>{
 navigate("/product",{state:{productDet:deal}})
 }
 
+const addToWishlist=async(prodData)=>{
+  const collecRef=collection(db,"cart");
+  await addDoc(collecRef,{name:prodData.name,image:prodData.image,old_price:prodData.old_price,discount:prodData.discount,quantity:prodData.quantity,det_1:prodData.det_1,det_2:prodData.det_2,det_3:prodData.det_3,det_4:prodData.det_4})
+
+}
+
 const dealProducts=(collectionDataName)=>{
   navigate("/productsList",{state:{collectionName:collectionDataName}});
 }
@@ -38,7 +44,7 @@ useEffect(()=>{
   console.log("useEffect in");
   const getDealsData = async ()=>{
     const res = await getDocs(dealsCollectionRef);
-    setDeals(res.docs.map((doc)=>({...doc.data(),name:doc.data().name,image:doc.data().image,old_price:doc.data().old_price,discount:doc.data().discount})))
+    setDeals(res.docs.map((doc)=>({...doc.data(),name:doc.data().name,image:doc.data().image,old_price:doc.data().old_price,discount:doc.data().discount,id:doc.id})))
   };
   getDealsData();
   console.log("useEffect out");
@@ -47,7 +53,7 @@ useEffect(()=>{
   console.log("useEffect in");
   const getDealsData = async ()=>{
     const res = await getDocs(supplementsCollectionRef);
-    setSupplements(res.docs.map((doc)=>({...doc.data(),name:doc.data().name,image:doc.data().image,old_price:doc.data().old_price,discount:doc.data().discount})))
+    setSupplements(res.docs.map((doc)=>({...doc.data(),name:doc.data().name,image:doc.data().image,old_price:doc.data().old_price,discount:doc.data().discount,id:doc.id})))
   };
   getDealsData();
   console.log("useEffect out");
@@ -117,7 +123,7 @@ const discountPrice=(old_price,discount)=>{
     <img className='deal-cont-pic' alt="" src={deal.image}  onClick={()=>productNavigate(deal)}></img>
 
     <div className='fav-star'>
-    <div className={`click ${selectedDeal === deal ? 'active active-2 active-3' : ''}`} onClick={() => handleFavouriteClick(deal)}>
+    <div className={`click ${selectedDeal === deal ? 'active active-2 active-3' : ''}`} onClick={() => {handleFavouriteClick(deal); addToWishlist(deal)}}>
                   <span className={`fa ${selectedDeal === deal ? 'fa-star' : 'fa-star-o'}`}></span>
                   <div className="ring"></div>
                   <div className="ring2"></div>
@@ -159,7 +165,7 @@ const discountPrice=(old_price,discount)=>{
     <div className='cont-img-div'>
     <img className='deal-cont-pic' alt="" src={deal.image}  onClick={()=>productNavigate(deal)}></img>
  <div className='fav-star'>
-    <div className={`click ${selectedDeal === deal ? 'active active-2 active-3' : ''}`} onClick={() => handleFavouriteClick(deal)}>
+    <div className={`click ${selectedDeal === deal ? 'active active-2 active-3' : ''}`} onClick={() => {handleFavouriteClick(deal); addToWishlist(deal)}}>
                   <span className={`fa ${selectedDeal === deal ? 'fa-star' : 'fa-star-o'}`}></span>
                   <div className="ring"></div>
                   <div className="ring2"></div>

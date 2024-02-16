@@ -160,14 +160,18 @@ transition: transform .1s;
    
     gap: 30px;
     grid-template-columns:2fr 2fr 2fr 2fr;
-    grid-template-rows: 400px;
+    grid-template-rows: 420px;
   }
   .grid-items-deal{
+    
     border:2px solid #6bbd9946 ;
     border-radius: 5px;
     box-shadow:0px 0px 20px rgba(0, 0, 0, 0.215);
     
     
+  }
+  .grid-items-deal:hover{
+    transform: scale(1.07);
   }
   .deal-content{
     display: flex;
@@ -182,6 +186,7 @@ transition: transform .1s;
   .deal-cont-pic{
     width: 150px;
     height: 250px;
+    margin-top: 10px;
     object-fit: contain;
   }
  .deal-add-to-cart{

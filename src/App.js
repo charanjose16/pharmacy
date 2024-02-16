@@ -15,6 +15,7 @@ import EditProduct from "./Pages/admin/EditProduct";
 import AddProducts from "./Pages/admin/AddProducts";
 import AllProducts from "./Pages/admin/AllProducts";
 import AddSearchHeader from "./Components/AddSearchHeader";
+import Wishlist from "./Pages/Wishlist";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route exact path='/addProducts' element={<AddProducts/>}/>
         <Route exact path='/allProducts' element={<AllProducts/>}/>
         <Route exact path='/addSearch' element={<AddSearchHeader/>}/>
+        <Route exact path='/wishlist' element={<Wishlist/>}/>
        </Routes>
     </div>
   );
