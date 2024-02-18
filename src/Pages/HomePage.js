@@ -59,6 +59,13 @@ useEffect(()=>{
   console.log("useEffect out");
 },[]);
 
+
+const addCart=async(data)=>{
+   const collectionRef=collection(db,"myCart");
+    await addDoc(collectionRef,{name:data.name,image:data.image,old_price:data.old_price,discount:data.discount,quantity:data.quantity,det_1:data.det_1,det_2:data.det_2,det_3:data.det_3,det_4:data.det_4,prod_count:1})
+    alert("Added to Cart Successfully!");
+}
+
 const discountPrice=(old_price,discount)=>{
   return (old_price-(old_price*discount)/100).toFixed(0);
 }
@@ -138,7 +145,7 @@ const discountPrice=(old_price,discount)=>{
     <h5>Rs.{discountPrice(deal.old_price,deal.discount)}</h5>
     <h6 className='deal-discount'>{deal.discount}% off</h6>
     </div>
-    <div className='deal-add-to-cart'><h6 className='ad-cart'>Add to Cart</h6></div>
+    <div className='deal-add-to-cart' onClick={()=>{addCart(deal)}}><h6 className='ad-cart'>Add to Cart</h6></div>
   
   </div>
 
@@ -179,7 +186,7 @@ const discountPrice=(old_price,discount)=>{
     <h5>Rs.{discountPrice(deal.old_price,deal.discount)}</h5>
     <h6 className='deal-discount'>{deal.discount}% off</h6>
     </div>
-    <div className='deal-add-to-cart'><h6 className='ad-cart'>Add to Cart</h6></div>
+    <div className='deal-add-to-cart' onClick={()=>{addCart(deal)}}><h6 className='ad-cart'>Add to Cart</h6></div>
   
   </div>
 

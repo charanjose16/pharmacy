@@ -3,6 +3,8 @@ import Header from "../Components/Header";
 import './ProductDetails.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import { useLocation } from 'react-router-dom';
+import { db } from '../firebase-config';
+import { addDoc,collection } from 'firebase/firestore';
 
 const ProductDetails = () => {
     const [addQuantity,setAddQuantity]=useState(1);
@@ -12,6 +14,24 @@ const ProductDetails = () => {
     const sub=()=>{
         setAddQuantity(prevQuantity=>(prevQuantity > 1 ?prevQuantity-1 : 1));
     }
+
+    const [selectedDeal, setSelectedDeal] = useState(null);
+
+  const handleFavouriteClick = (deal) => {
+    setSelectedDeal(deal);
+  };
+
+  const addToWishlist=async(prodData)=>{
+    const collecRef=collection(db,"cart");
+    await addDoc(collecRef,{name:prodData.name,image:prodData.image,old_price:prodData.old_price,discount:prodData.discount,quantity:prodData.quantity,det_1:prodData.det_1,det_2:prodData.det_2,det_3:prodData.det_3,det_4:prodData.det_4})
+  
+  }
+
+  const addCart=async(data)=>{
+    const collectionRef=collection(db,"myCart");
+     await addDoc(collectionRef,{name:data.name,image:data.image,old_price:data.old_price,discount:data.discount,quantity:data.quantity,det_1:data.det_1,det_2:data.det_2,det_3:data.det_3,det_4:data.det_4})
+     alert("Added to Cart Successfully!");
+ }
     
     const location=useLocation();
     const {productDet} =location.state || {};
@@ -24,8 +44,13 @@ const ProductDetails = () => {
         <div className='product-main-grid'>
             <div className='prod-items img'>
                 <img className='prod-image' src={productDet.image} width="400" height="400" style={{objectFit:'contain'}}/>
-                <img className='fav-icon' src='https://icons.veryicon.com/png/o/commerce-shopping/fine-edition-mall-icon/wishlist-1.png' height="40" width="40"></img>
-
+                <div className='fav-star'>
+    <div className={`click ${selectedDeal === productDet ? 'active active-2 active-3' : ''}`} onClick={() => {handleFavouriteClick(productDet); addToWishlist(productDet)}}>
+                  <span className={`fa ${selectedDeal === productDet ? 'fa-star' : 'fa-star-o'}`}></span>
+                  <div className="ring"></div>
+                  <div className="ring2"></div>
+    </div>
+    </div> 
             </div>
             <div className='prod-items'>
                 <h3>{productDet.name}</h3>  
@@ -54,7 +79,7 @@ const ProductDetails = () => {
                   <input type="text" class="form-control" value={addQuantity} />
                   <span class="input-group-text" onClick={add} style={{cursor:'pointer'}}>+</span>
                 </div>
-                <div className='prod-add-cart'><h5 className='prod-add-cart-text'>Add to Cart</h5></div>   
+                <div className='prod-add-cart' onClick={()=>{addCart(productDet)}}><h5 className='prod-add-cart-text'>Add to Cart</h5></div>   
                 </div>
 
             </div>

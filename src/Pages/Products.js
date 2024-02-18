@@ -29,6 +29,12 @@ const Products = () => {
     
     }
 
+    const addCart=async(data)=>{
+      const collectionRef=collection(db,"myCart");
+       await addDoc(collectionRef,{name:data.name,image:data.image,old_price:data.old_price,discount:data.discount,quantity:data.quantity,det_1:data.det_1,det_2:data.det_2,det_3:data.det_3,det_4:data.det_4,prod_count:1})
+       alert("Added to Cart Successfully!");
+   }
+
   useEffect(()=>{
     console.log("useEffect in");
          const getProductData=async()=>{
@@ -74,7 +80,7 @@ const Products = () => {
     <h5>Rs.{discountPrice(product.old_price,product.discount)}</h5>
     <h6 className='deal-discount'>{product.discount}% off</h6>
     </div>
-    <div className='deal-add-to-cart'><h6 className='ad-cart'>Add to Cart</h6></div>
+    <div className='deal-add-to-cart' onClick={()=>{addCart(product)}}><h6 className='ad-cart'>Add to Cart</h6></div>
   
   </div>
 

@@ -188,6 +188,7 @@ transition: transform .1s;
     height: 250px;
     margin-top: 10px;
     object-fit: contain;
+    cursor: pointer;
   }
  .deal-add-to-cart{
     color: #12ca7b;
@@ -198,9 +199,10 @@ transition: transform .1s;
     height: 40px;
     border:2px solid #05c572b4  ;
     border-radius: 8px;
-    transition: 0.2s;
+    transition: 0.05s;
    
  }
+
  .deal-cont-p{
     margin-left: 10%;
     margin-right: 10%;
@@ -208,6 +210,7 @@ transition: transform .1s;
  .deal-add-to-cart:hover{
     background-color: #12ca7b;
     color: aliceblue;
+    cursor: pointer;
  }
  .ad-cart{
     margin-top: 5px;

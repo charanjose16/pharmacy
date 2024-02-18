@@ -74,7 +74,7 @@ const Header = () => {
     <div className='sidebar-main-div'>
         <div className='sidebar-list-div' onClick={()=>{navigate("/")}}><img src='https://icons.veryicon.com/png/o/commerce-shopping/dream-icon-library/home-199.png' height="25" width="25"></img><h6>Home</h6></div>
         <div className='sidebar-list-div' onClick={()=>{navigate("/wishlist")} }><img src='https://icons.veryicon.com/png/o/miscellaneous/linear-icon-27/star-140.png' height="25" width="25" ></img><h6>Wishlist</h6></div>
-        <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/commerce-shopping/poly-budget-icon-library/cart-25.png' height="25" width="25"></img><h6>My Cart</h6></div>
+        <div className='sidebar-list-div' onClick={()=>{navigate("/myCart")} }><img src='https://icons.veryicon.com/png/o/commerce-shopping/poly-budget-icon-library/cart-25.png' height="25" width="25"></img><h6>My Cart</h6></div>
         <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/miscellaneous/h5-general-system-icon/orders-5.png' height="25" width="25"></img><h6>Orders</h6></div>
         <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/business/general-icon-of-customer-wealth-r-d-center/khcfdc-uu-customers.png' height="25" width="25"></img><h6>Customer support</h6></div>
         <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/healthcate-medical/at-icon-library/feedback-18.png' height="25" width="25"></img><h6>Reviews</h6></div>
