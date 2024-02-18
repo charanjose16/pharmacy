@@ -99,7 +99,7 @@ const Header = () => {
 </div>) }
 
 
-<div className='nav-item cart'>
+<div className='nav-item cart' onClick={()=>{navigate("/myCart")}}>
     <img className="cart-img" src='https://icons.veryicon.com/png/o/miscellaneous/life-linear-icon/cart-44.png'></img> 
 </div>
 
