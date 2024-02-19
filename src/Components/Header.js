@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 import {collection} from "firebase/firestore";
-import "bootstrap/dist/js/bootstrap.bundle"
+import "bootstrap/dist/js/bootstrap.bundle";
+
 
 
 const Header = () => {
