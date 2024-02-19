@@ -17,6 +17,7 @@ import AllProducts from "./Pages/admin/AllProducts";
 import AddSearchHeader from "./Components/AddSearchHeader";
 import Wishlist from "./Pages/Wishlist";
 import MyCart from "./Pages/MyCart";
+import BuyNow from "./Pages/BuyNow";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route exact path='/addSearch' element={<AddSearchHeader/>}/>
         <Route exact path='/wishlist' element={<Wishlist/>}/>
         <Route exact path='/myCart' element={<MyCart/>}/>
+        <Route exact path='/buyNow' element={<BuyNow/>}/>
        </Routes>
     </div>
   );

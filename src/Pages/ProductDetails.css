@@ -56,16 +56,27 @@
     height: 40px;
     border:2px solid #05c572b4  ;
     border-radius: 8px;
-    transition: 0.2s;
+    transition: 0.1s;
+    margin-right: 70px;
 }
 .prod-add-cart:hover{
-    background-color: #12ca7b;
+    background-color: #339b6e;
+    border:2px solid #339b6e;
     color: aliceblue;
+ }
+ .prod-add-cart.buy-now{
+    color: white;
+    background-color: #12ca7b;
+ }
+ .prod-add-cart.buy-now:hover{
+    color: white;
+    border:2px solid #339b6e ;
+    background-color:#339b6e;
  }
  .prod-quant{
     margin-top: 30px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 40px;
     align-items: center;
  }

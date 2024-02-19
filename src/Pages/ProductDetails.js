@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import Header from "../Components/Header";
 import './ProductDetails.css'
 import 'bootstrap/dist/css/bootstrap.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 import { db } from '../firebase-config';
 import { addDoc,collection } from 'firebase/firestore';
 
 const ProductDetails = () => {
+  const navigate=useNavigate();
     const [addQuantity,setAddQuantity]=useState(1);
     const add=()=>{ 
       setAddQuantity(prevQuantity=>prevQuantity+1);
@@ -74,11 +75,9 @@ const ProductDetails = () => {
                 </div>
 
                 <div className='prod-quant'>
-                 <div class="input-group quant">
-                  <span class="input-group-text" onClick={sub} style={{cursor:'pointer'}}>-</span>
-                  <input type="text" class="form-control" value={addQuantity} />
-                  <span class="input-group-text" onClick={add} style={{cursor:'pointer'}}>+</span>
-                </div>
+        
+                 <div className='prod-add-cart buy-now' onClick={()=>{navigate("/buyNow",{state:{prod:productDet}})}}><h5 className='prod-add-cart-text'>Buy Now</h5></div>
+               
                 <div className='prod-add-cart' onClick={()=>{addCart(productDet)}}><h5 className='prod-add-cart-text'>Add to Cart</h5></div>   
                 </div>
 

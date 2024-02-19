@@ -1,0 +1,49 @@
+.grid-items-buy-now{
+    margin-top: 100px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.338);
+    border-radius: 5px;
+}
+.discount-div-deals.buy-now{
+    gap: 40px;
+    margin-top: 30px;
+    margin-bottom:20px ;
+}
+.grid-container-deal.buy-now{
+    display: flex;
+    flex-direction: row;
+}
+.buy-now-price-quan-main{
+    
+    display: flex;
+    flex-direction: column;
+   
+}
+.buy-now-price-quan{
+    display: flex;
+    flex-direction: row;  
+    gap:30px; 
+    margin-top: 18%;
+    margin-left: 60px;
+}
+.chekout-price-list.buy-now{
+    margin-top: 20px;
+}
+.buy-now-checkout-div{
+    border: 2px solid #90e1ab91;
+    width:520px;
+    margin-top: 30px;
+    margin-left:80px ;
+    margin-right: 80px;
+    border-radius: 5px;
+    padding-bottom: 30px;
+}
+.buy-now-btn{
+width: 350px;
+margin-top: 20px;
+background-color:#6BBD99 ;
+color: aliceblue;
+}
+.buy-now-btn:hover{
+    background-color:#40936f ;
+    color: aliceblue; 
+}
