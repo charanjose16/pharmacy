@@ -157,7 +157,7 @@ transition: transform .1s;
     margin-left: 150px;
     margin-right: 150px;
     display: grid;
-   
+   margin-bottom: 20px;
     gap: 30px;
     grid-template-columns:2fr 2fr 2fr 2fr;
     grid-template-rows: 420px;

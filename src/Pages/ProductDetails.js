@@ -84,7 +84,7 @@ const ProductDetails = () => {
             </div>
         </div>
 
-        <h4>Product Details</h4>
+        <h4 style={{marginTop:"50px"}}>Product Details</h4>
         <div className='prod-des-div'>
             <p className='prod-des-p'>• {productDet.det_1}</p>
             <p className='prod-des-p'>• {productDet.det_2}</p>

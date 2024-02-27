@@ -119,7 +119,7 @@ margin-top: 4px;
     margin-right: 60px;
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 20px;margin-bottom: 40px;
  }
  .prod-des-p{
     margin-left: 60px;

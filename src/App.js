@@ -31,9 +31,9 @@ function App() {
         <Route exact path='/product' element={<ProductDetails/>}/>
         <Route exact path='/header' element={<Header/>}/>
         <Route exact path='/productsList' element={<Products/>}/>
-        <Route exact path='/admin' element={<AdminPage/>}/>
+        <Route exact path='/adminMain' element={<AdminPage/>}/>
         <Route exact path='/adminHeader' element={<AdminHeader/>}/>
-        <Route exact path='/adminProducts' element={<AdminProducts/>}/>
+        <Route exact path='/admin' element={<AdminProducts/>}/>
         <Route exact path='/editProduct' element={<EditProduct/>}/>
         <Route exact path='/addProducts' element={<AddProducts/>}/>
         <Route exact path='/allProducts' element={<AllProducts/>}/>

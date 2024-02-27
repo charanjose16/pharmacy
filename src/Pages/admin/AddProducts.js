@@ -25,7 +25,7 @@ const collectionRef = collection(db,collectionName);
 
 const addProduct=async()=>{
     await addDoc(collectionRef,{name:name,image:imageUrl,old_price:Number(oldPrice),discount:Number(discount),quantity:Number(quantity),det_1:desc1,det_2:desc2,det_3:desc3,det_4:desc4});
-    navigate("/adminProducts")
+    navigate("/admin")
 }
 
 
@@ -45,10 +45,10 @@ const addProduct=async()=>{
 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <li><h6 class="dropdown-item add-prod" onClick={()=>{setCategory("Best Deals"); setCollectionName("deals");}}>Best Deals</h6></li>
     <li><h6 class="dropdown-item add-prod" onClick={()=>{setCategory("Supplements"); setCollectionName("supplements"); }}>Supplements</h6></li>
-    <li><h6 class="dropdown-item add-prod" onClick={()=>{setCategory("Ayurveda and Herbs")}}>Ayurveda and Herbs</h6></li>
-    <li><h6 class="dropdown-item add-prod" onClick={()=>{setCategory("Health Food and Drink")}}>Health Food and Drink</h6></li>
-    <li><h6 class="dropdown-item add-prod" onClick={()=>{setCategory("Fitness")}}>Fitness</h6></li>
-    <li><h6 class="dropdown-item add-prod" onClick={()=>{setCategory("Wellness")}}>Wellness</h6></li>
+    <li><h6 class="dropdown-item add-prod" onClick={()=>{setCategory("Ayurveda and Herbs"); setCollectionName("ayurveda and herbs");}}>Ayurveda and Herbs</h6></li>
+    <li><h6 class="dropdown-item add-prod" onClick={()=>{setCategory("Health Food and Drink"); setCollectionName("health food and drinks");}}>Health Food and Drink</h6></li>
+    <li><h6 class="dropdown-item add-prod" onClick={()=>{setCategory("Fitness"); setCollectionName("fitness");}}>Fitness</h6></li>
+    <li><h6 class="dropdown-item add-prod" onClick={()=>{setCategory("Wellness"); setCollectionName("wellness");}}>Wellness</h6></li>
   </ul>
  
  

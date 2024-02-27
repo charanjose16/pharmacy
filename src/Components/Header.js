@@ -125,10 +125,18 @@ const Header = () => {
     <li><h6 class="dropdown-item"  onClick={()=>{
       dealProducts("supplements")
     }}>Supplements</h6></li>
-    <li><h6 class="dropdown-item">Ayurveda and Herbs</h6></li>
-    <li><h6 class="dropdown-item">Health Food and Drink</h6></li>
-    <li><h6 class="dropdown-item">Fitness</h6></li>
-    <li><h6 class="dropdown-item">Wellness</h6></li>
+    <li><h6 class="dropdown-item" onClick={()=>{
+      dealProducts("ayurveda and herbs")
+    }}>Ayurveda and Herbs</h6></li>
+    <li><h6 class="dropdown-item" onClick={()=>{
+      dealProducts("health food and drinks")
+    }}>Health Food and Drink</h6></li>
+    <li><h6 class="dropdown-item" onClick={()=>{
+      dealProducts("fitness")
+    }}>Fitness</h6></li>
+    <li><h6 class="dropdown-item" onClick={()=>{
+      dealProducts("wellness")
+    }}>Wellness</h6></li>
   </ul>
 
 </div>
