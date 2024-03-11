@@ -351,3 +351,12 @@ span:active {
 .fav-star{
     margin-left: 12px;
 }
+span.userrname{
+  font-family: 'Montserrat', sans-serif;
+  background: -webkit-linear-gradient(#14ad0c, #024814c2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: larger;
+  margin-left: 8px;
+  font-weight: 800;
+}

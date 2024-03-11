@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./Login.css"
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import {auth} from '../firebase-config';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -20,10 +20,17 @@ const navigate = useNavigate();
   }
 
   const login=async()=>{
+  
     try{
-      if(userEmail==="" || userPassword==="") alert("Please enter all fields");
-        await signInWithEmailAndPassword(auth,userEmail,userPassword)
+      if(userEmail==="" || userPassword==="") {
+        alert("Please enter all fields");
+      return
+    }
+        const userCredential = await signInWithEmailAndPassword(auth,userEmail,userPassword)
+        const userId = userCredential.user;
+        console.log(userId.uid);
         navigate("/")
+       
     }
     catch(error){
         if(error.code==='auth/invalid-credential'){

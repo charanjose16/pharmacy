@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
-import {collection} from "firebase/firestore";
+import {collection, doc, getDocs} from  "firebase/firestore";
 import "bootstrap/dist/js/bootstrap.bundle";
+
 
 
 
 const Header = () => {
   const [user, setUser] = useState("");
-  const [isLoggedIn,setIsLoggedIn]=useState(false);
   console.log(user);
+  const [isLoggedIn,setIsLoggedIn]=useState(false);
+  
   const login=()=>{
     navigate("/login")
   }
@@ -22,6 +24,7 @@ const Header = () => {
     const unsubscribeAuth = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
         fetchUserData(authUser.uid);
+  
         setIsLoggedIn(true);
       } else {
         setUser(null);
@@ -30,16 +33,31 @@ const Header = () => {
     });
     return () => unsubscribeAuth();
   }, []);
-  const fetchUserData = async (uid) => {
-    try {
-      const userDoc = await db.collection('users').doc(uid).get();
-      if (userDoc.exists()) {
-        setUser({ uid, ...userDoc.data(),name:userDoc.data().name});
+
+
+
+const fetchUserData = async (UserUid) => {
+  try {
+    const usersCollectionRef = collection(db, 'users');
+    const querySnapshot = await getDocs(usersCollectionRef);
+
+    querySnapshot.forEach((userDoc) => {
+      const userData = {...userDoc.data(),name:userDoc.data().name};
+      
+      // Check if the UID in the current document matches the target UID
+      if (userData.uid === UserUid) {
+        setUser(userData.name);
       }
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
-  };
+    });
+
+  
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+  }
+};
+
+// ...
+
 
 
   const handleLogout = async () => {
@@ -58,6 +76,7 @@ const Header = () => {
   const logoHome=()=>{
     navigate('/')
   }
+  
 
 
   return (
@@ -90,8 +109,8 @@ const Header = () => {
 <div className='nav-item search'><input  className="home-search" placeholder='search for products'></input>
 <button type="submit" className='home-search-button'>Search</button> 
 </div>
-{isLoggedIn?(<div>
-              <span className='username'><h5>{user.name}</h5></span>
+{isLoggedIn?(<div style={{display:"flex",flexDirection:"row",alignItems:"center",gap:"30px"}}>
+              <h6 style={{marginTop:"10px"}}>Hi, <span className='userrname'> {user ? user : ""}</span></h6>
               <button className='home-logsign' onClick={handleLogout}>Logout</button>
             </div>):
             (<div className='nav-item right'>
