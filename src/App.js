@@ -18,6 +18,7 @@ import AddSearchHeader from "./Components/AddSearchHeader";
 import Wishlist from "./Pages/Wishlist";
 import MyCart from "./Pages/MyCart";
 import BuyNow from "./Pages/BuyNow";
+import Prescription from "./Pages/Prescription";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route exact path='/wishlist' element={<Wishlist/>}/>
         <Route exact path='/myCart' element={<MyCart/>}/>
         <Route exact path='/buyNow' element={<BuyNow/>}/>
+        <Route exact path='/prescription' element={<Prescription/>}/>
        </Routes>
     </div>
   );

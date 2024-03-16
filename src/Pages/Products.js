@@ -3,7 +3,8 @@ import "./Products.css";
 import Header from "../Components/Header"
 import { useLocation ,useNavigate} from 'react-router-dom';
 import { getDocs,collection,addDoc } from 'firebase/firestore';
-import {db} from "../firebase-config";
+import {db,auth} from "../firebase-config";
+
 
 
 const Products = () => {
@@ -12,6 +13,9 @@ const Products = () => {
   const collectionRef=collection(db,collectionName);
   const [products,setProducts]=useState([]);
   const navigate=useNavigate();
+
+  const userID = auth.currentUser; 
+  console.log(userID ? userID.uid : "No user logged in");
 
   const [selectedDeal, setSelectedDeal] = useState(null);
 
@@ -24,14 +28,16 @@ const Products = () => {
     }
     
     const addToWishlist=async(prodData)=>{
+      const userID = auth.currentUser ? auth.currentUser.uid : null;
       const collecRef=collection(db,"cart");
-      await addDoc(collecRef,{name:prodData.name,image:prodData.image,old_price:prodData.old_price,discount:prodData.discount,quantity:prodData.quantity,det_1:prodData.det_1,det_2:prodData.det_2,det_3:prodData.det_3,det_4:prodData.det_4})
+      await addDoc(collecRef,{name:prodData.name,image:prodData.image,old_price:prodData.old_price,discount:prodData.discount,quantity:prodData.quantity,det_1:prodData.det_1,det_2:prodData.det_2,det_3:prodData.det_3,det_4:prodData.det_4,userID:userID})
     
     }
 
     const addCart=async(data)=>{
+      const userID = auth.currentUser ? auth.currentUser.uid : null;
       const collectionRef=collection(db,"myCart");
-       await addDoc(collectionRef,{name:data.name,image:data.image,old_price:data.old_price,discount:data.discount,quantity:data.quantity,det_1:data.det_1,det_2:data.det_2,det_3:data.det_3,det_4:data.det_4,prod_count:1})
+       await addDoc(collectionRef,{name:data.name,image:data.image,old_price:data.old_price,discount:data.discount,quantity:data.quantity,det_1:data.det_1,det_2:data.det_2,det_3:data.det_3,det_4:data.det_4,prod_count:1,userID:userID})
        alert("Added to Cart Successfully!");
    }
 

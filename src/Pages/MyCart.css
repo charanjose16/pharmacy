@@ -59,3 +59,42 @@
     flex-direction: row;
     gap: 60px;
 }
+.pres-main-div{
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     margin-top: 30px;
+     gap: 40px;
+}
+.my-presc{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    background-color: #6bbd9947;
+    color: black;
+    height: 50px;
+    align-items: center;
+}
+.upload-btn{
+    font-family: 'Montserrat', sans-serif;
+    background-color:#C4E8C2;
+    border-color:#C4E8C2 ;
+    border-radius: 5px;
+    font-size:15px;
+    padding: 3px 12px;
+    font-weight: 550;
+    color: rgba(1, 16, 11, 0.841);
+}
+.upload-btn:hover{
+    transform : scale(1.1);
+}
+
+.file-upl{
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color:#6BBD99; /* Change to desired background color */
+    color: #fff; /* Change to desired text color */
+    border-radius: 4px;
+}

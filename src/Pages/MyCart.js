@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./MyCart.css"
 import { useNavigate } from 'react-router-dom';
-import { db } from '../firebase-config';
+import { db ,auth} from '../firebase-config';
 import { deleteDoc,doc,getDocs,collection,updateDoc } from 'firebase/firestore';
 import Header from '../Components/Header';
 
@@ -17,7 +17,7 @@ const MyCart = () => {
       navigate("/product",{state:{productDet:product}})
       }
       
-  
+  const userID = auth.currentUser;
   
     useEffect(()=>{
       console.log("useEffect in");
@@ -72,7 +72,8 @@ const MyCart = () => {
     const totalSum = () => {
       let total = 0;
       products.forEach((prod) => {
-        total += discountPrice(prod.old_price, prod.discount) * prod.prod_count;
+        if(prod.userID === userID.uid){
+        total += discountPrice(prod.old_price, prod.discount) * prod.prod_count;}
       });
       setTotalPrice(total);
     };
@@ -89,18 +90,22 @@ const MyCart = () => {
 <div className='checkout-main-div'>
 
 <div  className="checkout-list">
-{products.map((prod)=>(
+{products.map((prod)=>{
+if(prod.userID === userID.uid){  
 
-    <div className='checkout-items' >
+    return (<div className='checkout-items' >
     <div><h6>{prod.name}</h6></div>
     <div className='pri-count-tot'><p style={{width:"70px"}}>Rs.{discountPrice(prod.old_price,prod.discount)}</p>
     <p style={{width:"20px"}}>X{prod.prod_count}</p>
     <p style={{width:"90px"}}>=  <span style={{fontWeight:"500", color:"#12ca7c"}}> Rs. {discountPrice(prod.old_price,prod.discount)*prod.prod_count}</span></p></div>
 
 
-    </div>
+    </div>)}
+    else{
+      return null
+    }
 
-))}
+})}
 </div>
 
 <div className='checkout-total-div'>
@@ -133,9 +138,10 @@ const MyCart = () => {
        
         <div className='grid-container-deal' >
       
-{products.map((product) => (
+{products.map((product) => {
+  if(product.userID === userID.uid){ 
 
-<div className='grid-items-deal' >
+return (<div className='grid-items-deal' >
 
 
 
@@ -161,8 +167,8 @@ const MyCart = () => {
   
   </div>
 
-</div>
-))}
+</div>)}
+})}
 
 </div>
 

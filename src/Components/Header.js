@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
-import {collection, doc, getDocs} from  "firebase/firestore";
+import {collection, getDocs} from  "firebase/firestore";
 import "bootstrap/dist/js/bootstrap.bundle";
-
-
 
 
 const Header = () => {
   const [user, setUser] = useState("");
-  console.log(user);
+ 
   const [isLoggedIn,setIsLoggedIn]=useState(false);
   
   const login=()=>{
@@ -64,6 +62,7 @@ const fetchUserData = async (UserUid) => {
     try {
       await auth.signOut();
       setUser(null);
+      navigate("/")
     } catch (error) {
       console.error('Error logging out:', error);
     }
@@ -82,8 +81,8 @@ const fetchUserData = async (UserUid) => {
   return (
     <div>
         <div className='nav'>
-        <img className='admin-sidebar-img' type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" 
-    aria-controls="offcanvasWithBothOptions" src='https://icons.veryicon.com/png/o/application/font-awesome/bars-3.png' width="30" height="30"></img>
+        {isLoggedIn?<img className='admin-sidebar-img' type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" 
+    aria-controls="offcanvasWithBothOptions" src='https://icons.veryicon.com/png/o/application/font-awesome/bars-3.png' width="30" height="30"></img>:null}
 
         <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div className="offcanvas-header">
@@ -92,12 +91,13 @@ const fetchUserData = async (UserUid) => {
   </div>
   <div className="offcanvas-body">
     <div className='sidebar-main-div'>
-        <div className='sidebar-list-div' onClick={()=>{navigate("/")}}><img src='https://icons.veryicon.com/png/o/commerce-shopping/dream-icon-library/home-199.png' height="25" width="25"></img><h6>Home</h6></div>
-        <div className='sidebar-list-div' onClick={()=>{navigate("/wishlist")} }><img src='https://icons.veryicon.com/png/o/miscellaneous/linear-icon-27/star-140.png' height="25" width="25" ></img><h6>Wishlist</h6></div>
-        <div className='sidebar-list-div' onClick={()=>{navigate("/myCart")} }><img src='https://icons.veryicon.com/png/o/commerce-shopping/poly-budget-icon-library/cart-25.png' height="25" width="25"></img><h6>My Cart</h6></div>
-        <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/miscellaneous/h5-general-system-icon/orders-5.png' height="25" width="25"></img><h6>Orders</h6></div>
-        <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/business/general-icon-of-customer-wealth-r-d-center/khcfdc-uu-customers.png' height="25" width="25"></img><h6>Customer support</h6></div>
-        <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/healthcate-medical/at-icon-library/feedback-18.png' height="25" width="25"></img><h6>Reviews</h6></div>
+        <div className='sidebar-list-div' onClick={()=>{navigate("/")}}><img src='https://icons.veryicon.com/png/o/commerce-shopping/dream-icon-library/home-199.png' height="25" width="25"></img><h6 style={{marginTop:"10px"}}>Home</h6></div>
+        <div className='sidebar-list-div' onClick={()=>{navigate("/wishlist")} }><img src='https://icons.veryicon.com/png/o/miscellaneous/linear-icon-27/star-140.png' height="25" width="25" ></img><h6 style={{marginTop:"10px"}}>Wishlist</h6></div>
+        <div className='sidebar-list-div' onClick={()=>{navigate("/myCart")} }><img src='https://icons.veryicon.com/png/o/commerce-shopping/poly-budget-icon-library/cart-25.png' height="25" width="25"></img><h6 style={{marginTop:"10px"}}>My Cart</h6></div>
+        <div className='sidebar-list-div' onClick={()=>{navigate("/prescription")} }><img src='https://icons.veryicon.com/png/o/healthcate-medical/health-disease-attribute/prescription-15.png' height="25" width="25"></img><h6 style={{marginTop:"10px"}}>Prescription</h6></div>
+        <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/miscellaneous/h5-general-system-icon/orders-5.png' height="22" width="22" style={{marginLeft:"2px"}}></img><h6 style={{marginTop:"10px",marginLeft:"2px"}}>Orders</h6></div>
+        {/* <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/business/general-icon-of-customer-wealth-r-d-center/khcfdc-uu-customers.png' height="25" width="25"></img><h6>Customer support</h6></div> */}
+        {/* <div className='sidebar-list-div'><img src='https://icons.veryicon.com/png/o/healthcate-medical/at-icon-library/feedback-18.png' height="25" width="25"></img><h6>Reviews</h6></div> */}
         
     </div>
   </div>
@@ -119,9 +119,9 @@ const fetchUserData = async (UserUid) => {
 </div>) }
 
 
-<div className='nav-item cart' onClick={()=>{navigate("/myCart")}}>
+{isLoggedIn?<div className='nav-item cart' onClick={()=>{navigate("/myCart")}}>
     <img className="cart-img" src='https://icons.veryicon.com/png/o/miscellaneous/life-linear-icon/cart-44.png' alt=''></img> 
-</div>
+</div>:null}
 
 </div>
 <div className='nav-hr-div'>

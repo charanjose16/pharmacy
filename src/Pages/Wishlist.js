@@ -3,7 +3,7 @@ import "./Wishlist.css";
 import Header from "../Components/Header"
 import { useNavigate} from 'react-router-dom';
 import { getDocs,collection,deleteDoc,doc } from 'firebase/firestore';
-import {db} from "../firebase-config";
+import {db,auth} from "../firebase-config";
 
 
 const Wishlist = () => {
@@ -13,7 +13,7 @@ const Wishlist = () => {
   const [products,setProducts]=useState([]);
   const navigate=useNavigate();
 
-
+  const userID = auth.currentUser; 
 
   const productNavigate=(product)=>{
     navigate("/product",{state:{productDet:product}})
@@ -47,13 +47,12 @@ const Wishlist = () => {
         <h3 className='prod-head'>My Wishlist :</h3>
         <div className='grid-container-deal' >
       
-{products.map((product) => (
+{products.map((product) => {
+  
+  if (product.userID === userID.uid) {
+return (<div className='grid-items-deal' >
 
-<div className='grid-items-deal' >
-
-
-
-
+   
   <div className='deal-content'>
     <div className='cont-img-div'>
     <img className='deal-cont-pic' src={product.image} alt='img' onClick={()=>productNavigate(product)}></img>
@@ -70,8 +69,9 @@ const Wishlist = () => {
   
   </div>
 
-</div>
-))}
+</div>);
+} else { return null }
+})}
 
 </div>
     </div>
