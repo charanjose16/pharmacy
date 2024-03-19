@@ -98,3 +98,15 @@
     color: #fff; /* Change to desired text color */
     border-radius: 4px;
 }
+.pres-img{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.pres-img-cls{
+    width: 450px;
+    height: 600px;
+    object-fit: contain;
+}

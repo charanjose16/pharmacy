@@ -1,16 +1,51 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./MyCart.css"
 import Header from '../Components/Header'
-import { ref, uploadBytes } from "firebase/storage"
+import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage"
 import { imageDB } from '../firebase-config'
 import {v4} from "uuid";
-import { event } from 'jquery';
+import { auth } from '../firebase-config'
 
 const Prescription = () => {
 
+  
     const [img,setImg]= useState(null)
+    const [imgUrl,setImgUrl]=useState(null)
+
+    useEffect(() => {
+      console.log('Component mounted. Fetching images...');
+      const fetchImage = async () => {
+        try {
+          const user = auth.currentUser;
+          if (user) {
+            const folderRef = ref(imageDB, `images/${user.uid}`);
+            const imageList = await listAll(folderRef);
+            const urls = await Promise.all(imageList.items.map(async (item) => {
+              return await getDownloadURL(item);
+            }));
+            setImgUrl(urls);
+          } else {
+            setImgUrl([]);
+          }
+        } catch (error) {
+          console.error('Error retrieving images:', error);
+          setImgUrl([]);
+        }
+      };
+      console.log('Fetching images...');
+      fetchImage();
+    }, []);
+    
+
+
+
     const uploadImg=()=>{
-        const imageRef = ref(imageDB,`images/${v4()}`)
+      const userID = auth.currentUser;
+    if (!img) {
+      alert('Please select an image');
+      return;
+    }
+        const imageRef = ref(imageDB,`images/${userID.uid}/${v4()}`)
         uploadBytes(imageRef,img)
         .then(() => {
             alert("Image uploaded successfully");
@@ -33,6 +68,11 @@ const Prescription = () => {
      <label className='file-upl'>
         <input  type='file' onChange={(e)=>setImg(e.target.files[0])}></input></label>
         <button className='upload-btn' onClick={uploadImg}>Upload</button>
+     </div>
+     <div className='pres-img'>
+     {imgUrl && imgUrl.map((url, index) => (
+    <img className="pres-img-cls" key={index} src={url} alt={`Prescription ${index}`} />
+  ))}
      </div>
 
     </div>
